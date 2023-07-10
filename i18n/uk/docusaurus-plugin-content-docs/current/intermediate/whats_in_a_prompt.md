@@ -2,15 +2,15 @@
 sidebar_position: 7
 ---
 
-# 🟢 What's in a Prompt?
+# 🟢 Що міститься в запиті?
 
-We have gone through a few different prompting strategies in the previous pages. This page will offer some general advice about what is actually important in a prompt.
-
-
-## "Ground Truth Matters Little"
+Раніше ми розглянули кілька різних стратегій запитів. На цій сторінці надано деякі загальні поради щодо того, що насправді є важливим у запиті.
 
 
-Surprisingly, when providing few shot %%exemplars|exemplars%% in prompts, the actual answers (%%gold|gold_labels%%) in the exemplars are not important. As shown in the figure below, providing random %%labels|labels%% in the exemplars barely hurts performance(@min2022rethinking). "Demo" is synonymous with exemplar in this image.
+## «Проста істина мало що значить»
+
+
+На диво, якщо вказати %%зразки|exemplars%% на основі кількох ілюстрацій у запитах, фактичні відповіді (%%gold|gold_labels% %) у зразках є неважливими. Як показано на малюнку нижче, надання випадкових %%маркерів|labels%% у зразках майже не впливає на продуктивність (@min2022rethinking). "Demo" є синонімом зразка на цьому зображенні.
 
 import GoldUn from '@site/docs/assets/intermediate/gold_unimportant.png';
 
@@ -18,27 +18,27 @@ import GoldUn from '@site/docs/assets/intermediate/gold_unimportant.png';
   <img src={GoldUn} style={{width: "750px"}} />
 </div>
 
-## Labelspace Matters
+## Простір маркерів має значення
 
-Even though the gold labels in the exemplars are not important, the %%labelspace|labelspace%% is. Even providing random labels from the labelspace helps the LLM get a better understanding of the labelspace, and improves results. Additionally, properly representing the distribution of the labelspace in the exemplars is important. Rather than uniformly sampling from the labelspace in the exemplars, it is better to sample according to the true distribution of the labels.
+Хоча gold labels в зразках не важливі, %%простір маркерів|labelspace%% має значення. Навіть надання випадкових маркерів із простору маркерів допомагає ВММ краще його зрозуміти й покращує результати. Крім того, важливим є правильне представлення розподілу простору маркерів у зразках. Замість рівномірної вибірки з простору маркерів у зразках, краще здійснювати вибірку відповідно до справжнього розподілу маркерів.
 
-## Format Matters
+## Формат має значення
 
-Perhaps the most important part of exemplars is how they are formatted. This format instructs the LLM on how to properly format its answer to the prompt.
+Мабуть, найважливішою частиною зразків є те, як вони відформатовані. Цей формат інструктує ВММ щодо того, як правильно форматувати свою відповідь на запит.
 
-For example, consider the below exemplars. They use all capital words as answers. Even though the answers are completely wrong (2+2 is not 50), GPT-3 correctly answers the last question, and follows the format of the others.
+Для прикладу розглянемо наведені нижче зразки. У відповідях всі слова написані великими літерами. Незважаючи на те, що відповіді повністю неправильні (2+2 — це не 50), GPT-3 правильно відповідає на останнє запитання та дотримується формату інших.
 
 ```text
-What is 2+2? 
-FIFTY
-What is 20+5?
-FORTY-THREE
-What is 12+9?
+Скільки буде 2+2? 
+П'ЯТДЕСЯТ
+Скільки буде 20+5?
+СОРОК ТРИ
+Скільки буде 12+9?
 // highlight-start
-TWENTY-ONE
+ДВАДЦЯТЬ ОДИН
 // highlight-end
 ```
 
-## Notes
+## Примітки
 
-Between 4-8 exemplars is a good number to use for few shot prompts(@min2022rethinking), but it can often be helpful to put as many as possible.
+4-8 зразків – це хороша кількість для використання запитів на основі кількох ілюстрацій(@min2022rethinking), але часто може бути корисним розмістити якомога більше.
