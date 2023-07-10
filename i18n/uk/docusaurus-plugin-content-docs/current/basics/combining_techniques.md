@@ -1,12 +1,12 @@
 ---
 sidebar_position: 6
 locale: Англійська (США)
-style: chicago
+style: Чикаго
 ---
 
 # 🟢 Техніки комбінування
 
-import CombinedPrompt from '@site/docs/assets/basics/combined_prompt.svg';
+import CombinedPrompt from '@site/docs/assets/combined_prompt.svg';
 
 <div style={{textAlign: 'center'}}>
   <CombinedPrompt style={{width:"100%",height:"300px",verticalAlign:"top"}}/>
