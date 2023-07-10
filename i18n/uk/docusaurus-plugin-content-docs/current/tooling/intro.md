@@ -2,62 +2,62 @@
 sidebar_position: 1
 ---
 
-# Overview
+# Огляд
 
-Prompt engineering is an iterative design task. More formalized iterative design fields (e.g. logo design) have well established tooling which allows designers to be more efficient. Similar tooling exists in the prompt engineering space, with a variety of prompt engineering IDEs (integrated development environments) having recently been created. There exists a surprising range of such tooling, with everything from research interfaces to professionally designed IDEs. This chapter will provide an overview of some of the tools which may be of interest to you as a prompt engineer.
+Інженерія запитів – це завдання ітеративного дизайну. Більш формалізовані галузі ітеративного дизайну (наприклад, дизайн логотипів) мають добре налагоджені інструменти, які дозволяють дизайнерам бути більш ефективними. Подібні інструменти, які були створені нещодавно, існують у просторі інженерії запитів, з різними ІСР для інженерії запитів (інтегрованими середовищами розробки). Існує дивовижний діапазон таких інструментів: від дослідницьких інтерфейсів до професійно розроблених ІСР. У цьому розділі подано огляд деяких інструментів, які можуть зацікавити вас як інженера запитів.
 
-See the final article in this chapter for my recommendations on tools to use.
+Перегляньте останню статтю цього розділу, щоб отримати мої рекомендації щодо інструментів для використання.
 
-Due to waitlists, I have not yet been able to access all IDEs mentioned here. Additionally, due to the number of tools coming out, not all have a dedicated page.
-
-
-Here is a table of the tools we will be discussing in this chapter:
-
-## Text Prompt IDEs
-| Name                                                                | Hosted Solution | Open Source | Research Focused | Business Model | Launched | Modalities | Supported Providers |
-| ------------------------------------------------------------------- | --------------- | ----------- | ---------------- | -------------- | -------- | ---------- | ------------------- |
-| [GPT-3 Playground](https://beta.openai.com/docs/quickstart)         | ✅               | ❌           | ❌                | Pay per tokens | ✅        | Text       | OpenAI              |
-| [Dust](https://dust.tt/)                                            | ✅               | ✅           | ❌                |                | ✅        | Text       | OpenAI, Cohere      |
-| [Soaked Prompts](https://soaked-prompts.vercel.app)                 | ✅               | ✅           | ❌                |                | ✅        | Text       | OpenAI              |
-| [Dyno](https://trydyno.com/login)                                   | ✅               | ❌           | ❌                |                | ✅        | Text       | OpenAI              |
-| [Everyprompt](https://www.everyprompt.com)                          | ✅               |             | ❌                | Freemium       | ✅        | Text       | OpenAI              |
-| [Promptmetheus](https://promptmetheus.com)                          | ✅               | ❌           | ✅                | Free           | ✅        | Text       | OpenAI              |
-| [PromptIDE](https://prompt.vizhub.ai)                               | ✅               | Code TBD    | ✅                | None           | ✅        | Text       |                     |
-| [PromptSource](https://github.com/bigscience-workshop/promptsource) | ❌               | ✅           | ✅                | None           | ✅        | Text       |                     |
-| [PromptChainer](https://arxiv.org/pdf/2203.06566.pdf)               | ❌               |             | ✅                | None           | ✅        | Text       |                     |
-| [PromptMaker](https://dl.acm.org/doi/abs/10.1145/3491101.3503564)   | ❌               |             | ✅                |                |          | Text       |                     |
-| [PromptSandbox](https://promptsandbox.io)                           | ✅               | ✅           | ✅                | Free           | ✅        | Text       | OpenAI              |
-
-| Name                                                                  | Hosted Solution | Open Source | Research Focused | Business Model    | Launched  | Modalities                 | Supported Providers                 |
-| --------------------------------------------------------------------- | --------------- | ----------- | ---------------- | ----------------- | --------- | -------------------------- | ----------------------------------- |
-| [Prompts.ai](https://prompts.ai/)                                     | ✅               | ✅           | ❌                | None              | ✅         | Text                       | OpenAI                              |
-| [Snorkel](https://snorkel.ai/snorkel-flow-platform/foundation-model/) | ✅               | ❌           | ❌                |                   | ✅         | Text                       |                                     |
-| [Multi](https://www.multi.tech)                                       |                 |             | ❌                |                   | Wait list | Text, Image                |                                     |
-| [Human Loop](https://humanloop.com)                                   | ✅               |             | ❌                |                   | Wait list | Text                       |                                     |
-| [Spellbook (Scale AI)](https://scale.com/spellbook)                   | ✅               | ❌           | ❌                |                   | Wait list | Text                       |                                     |
-| [Kollaprompt](https://kollaprompt.com)                                | ✅               | ❌           | ❌                | Under Development | Wait list | Text, Image, Audio         | OpenAI, Stable Diffusion            |
-| [Promptable](https://promptable.ai/projects/default/workspace)        | ✅               | ❌           | ❌                |                   | Wait list | Text                       | OpenAI                              |
-| [DiscuroAI](http://www.discuro.com)                                   | ✅               | ❌           | ❌                |                   | ✅         | Text, Image                | OpenAI                              |
-| [PromptShake](https://promptshake.com/?ref=producthunt)               | ✅               | ❌           | ❌                |                   | Wait list | Text                       |                                     |
-| [GPT IDE](https://gptide.com)                                         | ❌               | ❌           | ❌                |                   | ✅         | Text, images + audio later | OpenAI, later Stability.AI and more |
-| [The Forge AI](https://theforgeai.com/)                               | ✅               | ❌           | ❌                | Marketplace       | Wait list | Text, Images               | OpenAI, Stable Diffusion            |
+Через списки очікування я ще не зміг отримати доступ до всіх ІСР, згаданих тут. Крім того, через велику кількість інструментів, які виходять, не всі з них мають окрему сторінку.
 
 
+Ось таблиця інструментів, які ми будемо обговорювати в цьому розділі:
 
-## Image Only IDEs
+## ІСР з текстовими запитами
+| Назва                                                               | Хостингове рішення | Відкрите ПЗ     | Для досліджень | Бізнес-модель    | Запущено | Формати | Підтримувані постачальники |
+| ------------------------------------------------------------------- | ------------------ | --------------- | -------------- | ---------------- | -------- | ------- | -------------------------- |
+| [GPT-3 Playground](https://beta.openai.com/docs/quickstart)         | ✅                  | ❌               | ❌              | Оплата за токени | ✅        | Текст   | OpenAI                     |
+| [Dust](https://dust.tt/)                                            | ✅                  | ✅               | ❌              |                  | ✅        | Текст   | OpenAI, Cohere             |
+| [Soaked Prompts](https://soaked-prompts.vercel.app)                 | ✅                  | ✅               | ❌              |                  | ✅        | Текст   | OpenAI                     |
+| [Dyno](https://trydyno.com/login)                                   | ✅                  | ❌               | ❌              |                  | ✅        | Текст   | OpenAI                     |
+| [Everyprompt](https://www.everyprompt.com)                          | ✅                  |                 | ❌              | Freemium         | ✅        | Текст   | OpenAI                     |
+| [Promptmetheus](https://promptmetheus.com)                          | ✅                  | ❌               | ✅              | Безплатно        | ✅        | Текст   | OpenAI                     |
+| [PromptIDE](https://prompt.vizhub.ai)                               | ✅                  | Код уточнюється | ✅              | Немає            | ✅        | Текст   |                            |
+| [PromptSource](https://github.com/bigscience-workshop/promptsource) | ❌                  | ✅               | ✅              | Немає            | ✅        | Текст   |                            |
+| [PromptChainer](https://arxiv.org/pdf/2203.06566.pdf)               | ❌                  |                 | ✅              | Немає            | ✅        | Текст   |                            |
+| [PromptMaker](https://dl.acm.org/doi/abs/10.1145/3491101.3503564)   | ❌                  |                 | ✅              |                  |          | Текст   |                            |
+| [PromptSandbox](https://promptsandbox.io)                           | ✅                  | ✅               | ✅              | Безплатно        | ✅        | Текст   | OpenAI                     |
 
-| Name                                              | Hosted Solution | Open Source | Research Focused | Business Model | Launched | Modalities           | Supported Providers      |
-| ------------------------------------------------- | --------------- | ----------- | ---------------- | -------------- | -------- | -------------------- | ------------------------ |
-| [DALL·E](https://labs.openai.com)                 | ✅               | ❌           | ❌                | Buy Credits    | ✅        | Text2Image           | OpenAI DALLE             |
-| [Dream Studio](https://beta.dreamstudio.ai/dream) | ✅               | ❌           | ❌                | Buy Credits    | ✅        | Text2Image           | Stable Diffusion         |
-| [Patience](https://www.patience.ai/faq)           | ✅               | ❌           | ❌                | Buy Credits    | ✅        | Text2Image           | Stable Diffusion, OpenAI |
-| [getimg.ai](https://getimg.ai/guides)             | ✅               | ❌           | ❌                |                | ✅        | Text2Image, AIEditor |                          |
+| Назва                                                                 | Хостингове рішення | Відкрите ПЗ | Для досліджень | Бізнес-модель      | Запущено          | Формати                           | Підтримувані постачальники        |
+| --------------------------------------------------------------------- | ------------------ | ----------- | -------------- | ------------------ | ----------------- | --------------------------------- | --------------------------------- |
+| [Prompts.ai](https://prompts.ai/)                                     | ✅                  | ✅           | ❌              | Немає              | ✅                 | Текст                             | OpenAI                            |
+| [Snorkel](https://snorkel.ai/snorkel-flow-platform/foundation-model/) | ✅                  | ❌           | ❌              |                    | ✅                 | Текст                             |                                   |
+| [Multi](https://www.multi.tech)                                       |                    |             | ❌              |                    | Список очікування | Текст, зображення                 |                                   |
+| [Human Loop](https://humanloop.com)                                   | ✅                  |             | ❌              |                    | Список очікування | Текст                             |                                   |
+| [Spellbook (Scale AI)](https://scale.com/spellbook)                   | ✅                  | ❌           | ❌              |                    | Список очікування | Текст                             |                                   |
+| [Kollaprompt](https://kollaprompt.com)                                | ✅                  | ❌           | ❌              | На стадії розробки | Список очікування | Текст, зображення, аудіо          | OpenAI, Stable Diffusion          |
+| [Promptable](https://promptable.ai/projects/default/workspace)        | ✅                  | ❌           | ❌              |                    | Список очікування | Текст                             | OpenAI                            |
+| [DiscuroAI](http://www.discuro.com)                                   | ✅                  | ❌           | ❌              |                    | ✅                 | Текст, зображення                 | OpenAI                            |
+| [PromptShake](https://promptshake.com/?ref=producthunt)               | ✅                  | ❌           | ❌              |                    | Список очікування | Текст                             |                                   |
+| [GPT IDE](https://gptide.com)                                         | ❌                  | ❌           | ❌              |                    | ✅                 | Текст, зображення + аудіо пізніше | OpenAI, пізніше Stability.AI тощо |
+| [The Forge AI](https://theforgeai.com/)                               | ✅                  | ❌           | ❌              | Інтернет-магазин   | Список очікування | Текст, зображення                 | OpenAI, Stable Diffusion          |
 
-**Hosted Solution**: The tool is hosted on a website and can be used without installing anything.
 
-**Research Focused**: The tool is designed for research purposes, and may not be as user friendly as other tools.
 
-**Business Model**: Type of business model.
+## IDE лише для зображень
+
+| Назва                                             | Хостингове рішення | Відкрите ПЗ | Для досліджень | Бізнес-модель    | Запущено | Формати              | Підтримувані постачальники |
+| ------------------------------------------------- | ------------------ | ----------- | -------------- | ---------------- | -------- | -------------------- | -------------------------- |
+| [DALL·E](https://labs.openai.com)                 | ✅                  | ❌           | ❌              | Оплата за запити | ✅        | Text2Image           | OpenAI DALLE               |
+| [Dream Studio](https://beta.dreamstudio.ai/dream) | ✅                  | ❌           | ❌              | Оплата за запити | ✅        | Text2Image           | Stable Diffusion           |
+| [Patience](https://www.patience.ai/faq)           | ✅                  | ❌           | ❌              | Оплата за запити | ✅        | Text2Image           | Stable Diffusion, OpenAI   |
+| [getimg.ai](https://getimg.ai/guides)             | ✅                  | ❌           | ❌              |                  | ✅        | Text2Image, AIEditor |                            |
+
+**Хостингове рішення**: інструмент розміщено на вебсайті, і його можна використовувати, нічого не встановлюючи.
+
+**Для досліджень**: інструмент розроблений для дослідницьких цілей і може бути не таким зручним для користувача, як інші інструменти.
+
+**Бізнес-модель**: тип бізнес-моделі (моделі монетизації).
 
 
 
