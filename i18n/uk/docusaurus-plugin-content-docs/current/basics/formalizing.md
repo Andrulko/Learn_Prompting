@@ -2,7 +2,7 @@
 sidebar_position: 7
 ---
 
-# 🟢 Formalizing Prompts
+# 🟢 Формалізація запитів
 
 import FormalPrompt from '@site/docs/assets/basics/formal_prompt.svg';
 
@@ -10,90 +10,90 @@ import FormalPrompt from '@site/docs/assets/basics/formal_prompt.svg';
   <FormalPrompt style={{width:"100%",height:"300px",verticalAlign:"top"}}/>
 </div>
 
-We have now covered multiple types of prompts, as well as ways to combine them. This page will provide you with terms to explain different types of prompts. Although there have been approaches to formalize discourse around prompt engineering(@white2023prompt), the field is ever changing, so we will provide you with just enough information to get started.
+Зараз ми розглянули кілька типів запитів, а також способи їх поєднання. На цій сторінці ви знайдете терміни для пояснення різних типів запитів. Попри те, що існують підходи до формалізації дискурсу щодо створення запитів (@white2023prompt), сфера постійно змінюється, тому на початку ми надамо вам достатньо інформації.
 
-## Parts of a Prompt
+## Складові запиту
 
-There are a few different parts of a prompt that you will see over and over again. They are roughly:
+Є кілька різних складових запиту, які ви зустрічатимете знову і знову. Вони приблизно такі:
 
-- A role
-- An instruction/task
-- A question
-- Context
-- Examples (few shot)
+- Роль
+- Інструкція/завдання
+- Питання
+- Контекст
+- Приклади (ілюстрації)
 
-We have covered roles, instructions, and examples in previous pages. A question is simply a question! (E.g. `what is the capital of France?`). Context is any relevant information that you want the model to use when answering the question/performing the instruction.
+Ролі, інструкції та приклади ми розглянули на попередніх сторінках. Питання - це просто питання! (Напр. `яка столиця Франції?`). Контекст — це будь-яка релевантна інформація, яку ви хочете, щоб модель використовувала під час відповіді на запитання або виконання інструкції.
 
-Not all of these occur in every prompt, and when some do occur, there is no standard order for them. For example, the following two prompts, which each contain a role, an instruction, and context, will do roughly the same thing:
-
-```text
-You are a doctor. Read this medical history and predict risks for the patient:
-
-January 1, 2000: Fractured right arm playing basketball. Treated with a cast.
-February 15, 2010: Diagnosed with hypertension. Prescribed lisinopril.
-September 10, 2015: Developed pneumonia. Treated with antibiotics and recovered fully.
-March 1, 2022: Sustained a concussion in a car accident. Admitted to the hospital and monitored for 24 hours.
-```
+Не всі з них трапляються в кожному запиті, а коли все ж трапляються, то стандартного порядку для них немає. Наприклад, наступні два запити, кожен з яких містить роль, інструкцію та контекст, виконуватимуть приблизно те саме:
 
 ```text
-January 1, 2000: Fractured right arm playing basketball. Treated with a cast.
-February 15, 2010: Diagnosed with hypertension. Prescribed lisinopril.
-September 10, 2015: Developed pneumonia. Treated with antibiotics and recovered fully.
-March 1, 2022: Sustained a concussion in a car accident. Admitted to the hospital and monitored for 24 hours.
+Ви лікар. Прочитайте цю історію хвороби та спрогнозуйте ризики для пацієнта:
 
-You are a doctor. Read this medical history and predict risks for the patient:
+1 січня 2000 р.: перелом правої руки під час гри в баскетбол. Лікування: наклали гіпс.
+15 лютого 2010 р.: Діагностовано гіпертонічну хворобу. Призначили лізиноприл.
+10.09.2015 р.: Розвинулася пневмонія. Проліковано антибіотиками, пацієнт одужав.
+1 березня 2022 року отримав струс мозку в ДТП. Госпіталізували та спостерігали протягом доби.
 ```
 
-However, the second prompt is likely preferable since the instruction is the last part of the prompt. This is good since the LLM is less likely to simply write more context instead of following the instruction. For example, if given the first prompt, the LLM might add a new line: `March 15, 2022: Follow-up appointment scheduled with neurologist to assess concussion recovery progress.`
+```text
+1 січня 2000 р.: зламана права рука під час гри в баскетбол. Лікування: наклали гіпс.
+15 лютого 2010 р.: Діагностовано гіпертонічну хворобу. Призначили лізиноприл.
+10.09.2015 р.: Розвинулася пневмонія. Проліковано антибіотиками, пацієнт одужав.
+1 березня 2022 року отримав струс мозку в ДТП. Госпіталізували та спостерігали протягом доби.
 
-
-## A "Standard" Prompt
-
-We have heard of a few different formats of prompts thus far. Now, we will quickly jump back to the beginning and define a "standard" prompt. Following Kojima et al. (@kojima2022large), we will refer to prompts that consist solely of a question as "standard" prompts. We also consider prompts that consist solely of a question that are in the QA format to be "standard" prompts.
-
-#### Why should I care?
-
-Many articles/papers that we reference use this term. We are defining it so we can discuss new types of prompts in contrast to standard prompts.
-
-### Two examples of standard prompts:
-
-
-_Standard Prompt_
-```
-What is the capital of France?
+Ви лікар. Прочитайте цю історію хвороби та спрогнозуйте ризики для пацієнта:
 ```
 
-_Standard Prompt in QA format_
+Однак другий запит, швидше за все, є кращим, оскільки інструкція є останньою частиною запиту. Це добре, оскільки ВММ менш імовірно просто напише більше контексту замість того, щоб слідувати інструкціям. Наприклад, якщо ВММ отримає перший запит, вона може додати новий рядок: `15 березня 2022 р.: заплановано повторний прийом у невролога для оцінки прогресу відновлення струсу мозку.`
+
+
+## "Стандартний" запит
+
+Наразі ми чули про кілька різних форматів запитів. Тепер ми швидко повернемося на початок і дамо визначення "стандартному" запиту. Слідом за Kojima et al. (@kojima2022large), ми називатимемо запити, які складаються лише із запитання, "стандартними"запитами. Ми також вважаємо запити, які складаються лише з запитання у форматі QA, "стандартними" запитами.
+
+#### Чому мене це має хвилювати?
+
+Багато статей та документів, на які ми посилаємося, використовують цей термін. Ми даємо йому визначення, щоб ми могли обговорити нові типи запитів на відміну від стандартних запитів.
+
+### Два приклади стандартних запитів:
+
+
+_Стандартний запит_
 ```
-Q: What is the capital of France?
-
-A:
-```
-
-## Few Shot Standard Prompts
-
-Few shot standard prompts(@liu2021pretrain) are just standard prompts that have _exemplars_ in them. Exemplars are examples of the task that the prompt is trying to solve, which are included in the prompt itself (@brown2020language). In research, few shot standard prompts are sometimes referred to simply as standard prompts (though we attempt not to do so in this guide).
-
-### Two examples of few shot standard prompts:
-
-_Few Shot Standard Prompt_
-
-```
-What is the capital of Spain?
-Madrid
-What is the capital of Italy?
-Rome
-What is the capital of France?
+Яка столиця Франції?
 ```
 
-_Few Shot Standard Prompt in QA format_
+_Стандартний запит у форматі QA_
 ```
-Q: What is the capital of Spain?
-A: Madrid
-Q: What is the capital of Italy?
-A: Rome
-Q: What is the capital of France?
-A:
+Питання: Яка столиця Франції?
+
+Відповідь:
 ```
 
-Few shot prompts facilitate "few shot" AKA "in context" learning, which is the ability to learn without parameter updates(@zhao2021calibrate).
+## Запит з кількома ілюстраціями
+
+Стандартні запити з кількома ілюстраціями(@liu2021pretrain) — стандартні запити, які містять _приклади_ у собі. Ілюстрації – це приклади завдань, які запит намагається вирішити, і які включені в сам запит (@brown2020language). У дослідженнях стандартні запити з кількома ілюстраціями іноді називають просто стандартними запитами (хоча ми намагаємося не робити так в цьому посібнику).
+
+### Два приклади стандартних запитів з декількома ілюстраціями:
+
+_Стандартні запити з кількома ілюстраціями_
+
+```
+Яка столиця Іспанії?
+Мадрид
+Яка столиця Італії?
+Рим
+Яка столиця Франції?
+```
+
+_Стандартний запит з кількома ілюстраціями у форматі QA_
+```
+Питання: Яка столиця Іспанії?
+Відповідь: Мадрид
+Питання: Яка столиця Італії?
+Відповідь: Рим
+Питання: Яка столиця Франції?
+Відповідь:
+```
+
+Запити з кількома ілюстраціями допомагають навчанню "кількома ілюстраціями" також відомим як "у контексті", що означає навчатися без оновлення параметрів (@zhao2021calibrate).
