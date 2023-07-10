@@ -4,7 +4,7 @@ sidebar_position: 18
 
 # OpenAI DALLE IDE
 
-[OpenAI DALLE IDE](https://labs.openai.com) is a website for generating images with DALLE-2, a text to image model.
+[OpenAI DALLE IDE](https://labs.openai.com) – це вебсайт для створення зображень за допомогою DALLE-2, моделі для перетворення тексту в зображення.
 
 import Image from '@site/docs/assets/tooling/dalle.png';
 
@@ -12,6 +12,6 @@ import Image from '@site/docs/assets/tooling/dalle.png';
   <img src={Image} style={{width: "750px"}} />
 </div>
 
-## Features
+## Характеристики
 
-OpenAI DALLE IDE has a smooth user experience, and is easy to use. It has a history view, so you can see past generations, and a collections feature for organizing and sharing generations. It also allows for image editing and outpainting.
+OpenAI DALLE IDE забезпечує простоту роботи та користування. Він має історію переглядів, щоб ви могли бачити попередні результати, а також функцію колекцій для організації та спільного використання результатів. Він також дозволяє редагувати та домальовувати зображення.
