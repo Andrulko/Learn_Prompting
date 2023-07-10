@@ -2,12 +2,12 @@
 sidebar_position: 0
 ---
 
-# 🟢 Introduction
+# 🟢 Вступ
 
-Now that you have learned some very basic prompt engineering techniques, it is time to learn how to use to solve simple, everyday problems. This section covers tasks like writing/summarizing emails and creating contracts.
+Тепер, коли ви вивчили деякі найпростіші методи інженерії запитів, настав час навчитися використовувати їх для розв'язання повсякденних задач. Цей розділ охоплює такі завдання, як написання/резюмування електронних листів і створення контрактів.
 
-The examples presented in the following articles should help show you the range of applications to which you can apply prompt engineering.
+Приклади, наведені в наступних статтях, мають допомогти показати вам низку програм, в яких використовується інженерія запитів.
 
-:::note
-We use both ChatGPT and GPT-3 in these examples. It usually does not matter which you use.
+:::Зауважте!
+У цих прикладах ми використовуємо ChatGPT і GPT-3. Як правило, не має значення, який з них ви використовуєте.
 :::
