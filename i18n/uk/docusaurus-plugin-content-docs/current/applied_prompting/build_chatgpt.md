@@ -2,7 +2,7 @@
 sidebar_position: 4
 ---
 
-# 🟢 Build ChatGPT from GPT-3
+# 🟢 Білд ChatGPT з GPT-3
 
 import Skippy from '@site/docs/assets/basic_applications/skippy_chatbot.png'    
 import SkippyHeader from '@site/docs/assets/basic_applications/skippy_chatbot_header.png'    
@@ -13,104 +13,104 @@ import ChatGPT from '@site/docs/assets/basic_applications/chatgpt_ui_diagram.png
   <img src={SkippyHeader} style={{width: "700px"}} />
 </div>
 
-## Introduction
+## Вступ
 
-[ChatGPT](https://chat.openai.com/chat) has blown up in the past month, gaining a million users in just a week. Surprisingly, the underlying model, GPT-3 debuted in 2020 and was released for public access <a href="https://openai.com/blog/api-no-waitlist/">over a year ago!</a>   
+[ChatGPT](https://chat.openai.com/chat) набув шаленої популярності за останній місяць, отримавши мільйон користувачів лише за тиждень. Дивно, але основна модель, GPT-3, дебютувала у 2020 році та була випущена для загального доступу <a href="https://openai.com/blog/api-no-waitlist/">понад рік тому!</a>   
 
-For those who don't know, ChatGPT is a new language model from OpenAI that was finetuned from GPT-3 to be optimized for conversation (@chatgpt2022). It has a user-friendly chat interface, where you can give input and get a response from an AI assistant. Check it out at [chat.openai.com](https://chat.openai.com/chat).
+Для тих, хто не знає, ChatGPT — це нова мовна модель від OpenAI, яка була доопрацьована з GPT-3 для оптимізації спілкування (@chatgpt2022). Вона має зручний інтерфейс чату, у якому ви можете вказати вхідні дані та отримати відповідь від помічника на основі ШІ. Ви можете знайти його на сайті [chat.openai.com](https://chat.openai.com/chat).
 
-While the early versions of GPT-3 weren't as advanced as the current GPT-3.5 series, they were still impressive. These models have been available through an API and a <a href="https://beta.openai.com/playground">playground web UI interface</a> that lets you tune certain configuration hyperparameters and test prompts. GPT-3 gained significant traction, but it did not approach the virality of ChatGPT.
+Хоча ранні версії GPT-3 не були такими просунутими, як поточна серія GPT-3.5, вони все одно приємно вражали. Ці моделі доступні через API та <a href="https://beta.openai.com/playground"> платформи вебінтерфейсу</a>, який дозволяє налаштовувати певні гіперпараметри конфігурації та пробні запити. GPT-3 отримав значну популярність, але він не наблизився до вірусного розповсюдження ChatGPT.
 
-What makes ChatGPT so successful, compared to GPT-3, is it's accessibility as a straightforward AI assistant for the average person, regardless of their knowledge of data science, language models, or AI.
+Що робить ChatGPT таким успішним у порівнянні з GPT-3, так це його доступність як безпосереднього помічника на основі ШІ для звичайної людини, незалежно від її знань у галузі даних, мовних моделей чи ШІ.
 
-In this article, I overview how chatbots like ChatGPT can be implemented using a large language model like GPT-3.
+У цій статті я розглядаю, як чат-боти, такі як ChatGPT, можуть бути розроблені за допомогою великої мовної моделі, як-от GPT-3.
 
-## Motivation
-This article was written in part because of a tweet by <a href="https://twitter.com/goodside">Riley Goodside</a>, noting how ChatGPT could have been implemented.
+## Мотивація
+Ця стаття була написана частково завдяки твіту від <a href="https://twitter.com/goodside">Райлі Гудсайд</a>, у якому зазначено, як можна було б розробити ChatGPT.
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">How to make your own knock-off ChatGPT using GPT‑3 (text‑davinci‑003) — where you can customize the rules to your needs, and access the resulting chatbot over an API. <a href="https://t.co/9jHrs91VHW">pic.twitter.com/9jHrs91VHW</a></p>&mdash; Riley Goodside (@goodside) <a href="https://twitter.com/goodside/status/1607487283782995968?ref_src=twsrc%5Etfw">December 26, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Як створити власний підробний ChatGPT за допомогою GPT‑3 (text‑davinci‑003) — де ви можете налаштувати правила відповідно до своїх потреб і отримати доступ до створеного чат-бота через API. <a href="https://t.co/9jHrs91VHW">pic.twitter.com/9jHrs91VHW</a></p>&mdash; Райлі Гудсайд (@goodside) <a href="https://twitter.com/goodside/status/1607487283782995968?ref_src=twsrc%5Etfw">26 грудня 2022 р.</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-Like other models in the GPT-3.5 series, ChatGPT was trained using [RLHF](https://huggingface.co/blog/rlhf), but much of it's effectiveness comes from using a **good prompt**.
+Як і інші моделі серії GPT-3.5, ChatGPT було навчено за допомогою [RLHF](https://huggingface.co/blog/rlhf), але більша частина його ефективності залежить від використання **потрібного запиту**.
 
-## The Prompt
+## Запит
 
 <div style={{textAlign: 'left'}}>
   <img src={Skippy} style={{width: "700px"}} />
-  <p style={{color: "gray", fontSize: "12px", fontStyle: "italic"}}>Full Skippy chatbot prompt from article header</p>
+  <p style={{color: "gray", fontSize: "12px", fontStyle: "italic"}}>Повний запит чат-бота Skippy із заголовка статті</p>
 </div>
 
-<a href="https://learnprompting.org/docs/basics/prompting">Prompting is the process of instructing an AI to do something. </a> As you have probably seen in ChatGPT examples online, you can prompt it to do just about anything. Common use cases are summarizing text, writing content based on a description, or creating things like poems, recipes, and much more.
+<a href="https://learnprompting.org/docs/basics/prompting">Здійснення пошуку за запитом — це процес надання вказівок ШІ щось зробити. </a> Як ви, напевно, бачили в прикладах ChatGPT в Інтернеті, ви можете надати йому запит зробити будь-що. Типовими прикладами його використання є анотування тексту, написання контенту на основі опису або створення таких речей, як вірші, рецепти та багато іншого.
 
 <p></p>
 
-ChatGPT is both a language model and user interface. The prompt input by a user to the interface is actually inserted into a larger prompt that contains the entire conversation between the user and ChatGPT. This allows the underlying language model to understand the context of the conversation and respond appropriately.
+ChatGPT — це і мовна модель, і інтерфейс користувача. Запит, введений користувачем до інтерфейсу, фактично вставляється в більший запит, який містить увесь діалог між користувачем і ChatGPT. Це дозволяє базовій мовній моделі зрозуміти контекст розмови та відповідати належним чином.
 
 <div style={{textAlign: 'left'}}>
   <img src={ChatGPT} style={{width: "600px"}} />
-  <p style={{color: "gray", fontSize: "12px", fontStyle: "italic"}}>Example insertion of user prompt before sending to model</p>
+  <p style={{color: "gray", fontSize: "12px", fontStyle: "italic"}}>Приклад вставки запиту користувача перед надсиланням його до моделі</p>
 </div>
 
-The language model completes the prompt by figuring out what words come next based on probabilities it learned during pre-training(@jurafsky2009).
+Мовна модель доповнює запит, з’ясовуючи, які слова будуть наступними на основі ймовірностей, які вона вивчила під час попередньої підготовки (@jurafsky2009).
 
 <p></p>
 
-GPT-3 is able to 'learn' from a simple instruction or a few examples in the prompt. The latter is called few-shot, or in context learning (@brown2020language). In the chatbot prompt above, I create a fictitious chatbot named Skippy, and instruct it to provide responses to users. GPT-3 picks up on the back-and-forth format, `USER: {user input}` and `SKIPPY: {skippy response}`. GPT-3 understands that Skippy is a chatbot and the previous exchanges are a conversation, so that when we provide the next user input, "Skippy" will respond.
+GPT-3 здатний "навчатися" з простих вказівок або кількох прикладів у запиті. Останнє називається методом кількох прикладів, або навчанням за контекстом (@brown2020language). У запиті вище я створюю фіктивного чат-бота під назвою Skippy і даю йому вказівку надавати відповіді користувачам. GPT-3 підбирає зворотний формат, `КОРИСТУВАЧ: {user input}` і `СКІППІ: {skippy response}`. GPT-3 розуміє, що Скіппі — це чат-бот, а попередні обміни інформацією — це діалог, тому, коли ми надаємо вхідні дані наступного користувача, Скіппі відреагує.
 
-### Memorization
+### Запам'ятовування
 
-Past exchanges between Skippy and the user get appended to the next prompt. Each time we give more user input and get more chatbot output, the prompt expands to incorporate this new exchange. This is how chatbots like Skippy and ChatGPT can **remember previous inputs.** There is a limit, however, to how much a GPT-3 chatbot can remember.
+Попередні обміни інформацією між Скіппі та користувачем додаються до наступного запиту. Щоразу, коли ми надаємо більше вхідних даних користувачів і отримуємо більше результатів від чат-бота, запит розширюється, щоб включити цей новий обмін. Ось як чат-боти, такі як Skippy і ChatGPT, можуть **запам'ятовувати попередні введення.** Однак, існує обмеження на те, скільки чат-бот GPT-3 може запам’ятати.
 
-Prompts can get massive after several exchanges, especially if we are using the chatbot to generate long responses like blog posts. Prompts sent to GPT-3 are converted into tokens, which are individual words or parts of them. There is a limit of <a href="https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them">4097 tokens (about 3000 words)</a> for the combined prompt and generated response for GPT-3 models, including ChatGPT.
+Запити можуть стати об'ємними після кількох обмінів, особливо якщо ми використовуємо чат-бота для створення довгих відповідей, як-от дописів у блозі. Запити, надіслані до GPT-3, перетворюються на токени, які є окремими словами або їх частинами. Існує обмеження на <a href="https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them">4097 токенів (приблизно 3000 слів)</a> для комбінованого запиту та згенерованої відповіді для моделей GPT-3, включно з ChatGPT.
 
-### A Few Examples
+### Кілька прикладів
 
-There are many different use cases of chatbot prompts that store previous conversations. ChatGPT is meant to be an all purpose general assistant and in my experience, it rarely asks follow ups.
+Існує багато різних випадків використання запитів чат-бота, які зберігають попередні діалоги. ChatGPT був створений для того, щоб бути універсальним загальним помічником, і, з мого досвіду, він рідко вимагає додаткових дій.
 
-#### Therapy chatbot that asks about your day
+#### Чат-бот Therapy, який запитує, як минув ваш день
 
-It can be helpful to have a chatbot that actively asks questions and gets feedback from the user. Below is an example therapy chatbot prompt that will ask questions and follow ups to help a user think about their day.
+Мати чат-бота, який активно ставить запитання та отримує зворотний зв'язок від користувача, може стати в пригоді. Нижче наведено приклад запиту чат-бота Therapy, який ставитиме запитання та відповідатиме, щоб допомогти користувачеві подумати про свій день.
 
 <div style={{textAlign: 'left'}}>
   <img src={Therapy} style={{width: "700px"}} />
-  <p style={{color: "gray", fontSize: "12px", fontStyle: "italic"}}>Therapy chatbot prompt</p>
+  <p style={{color: "gray", fontSize: "12px", fontStyle: "italic"}}>Запит для чат-бота Therapy</p>
 </div>
 
-#### Talk to your younger self using old journal entries
+#### Поговоріть із молодшим собою, використовуючи старі записи в щоденнику
 
-<a href="https://twitter.com/michellehuang42">Michelle Huang</a> used GPT-3 to have a chat with her younger self. The prompt uses some context, in this case old journal entries, paired with a chatbot style back and forth format. GPT-3 is able to mimic a personality based on these entries.
+<a href="https://twitter.com/michellehuang42">Мішель Хуан</a> використовувала GPT-3, щоб поспілкуватися з молодшою собою. Запит використовує певний контекст, у цьому випадку старі записи щоденника, у поєднанні з форматом чат-бота. GPT-3 здатний імітувати людську особистість на основі цих записів.
 
 <p></p>
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">i trained an ai chatbot on my childhood journal entries - so that i could engage in real-time dialogue with my &quot;inner child&quot;<br/><br/>some reflections below:</p>&mdash; michelle huang (@michellehuang42) <a href="https://twitter.com/michellehuang42/status/1597005489413713921?ref_src=twsrc%5Etfw">November 27, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">я показала чат-боту на основі ШІ записи у щоденнику мого дитинства, щоб я могла вести діалог у реальному часі зі своєю &quot;внутрішньою дитиною&quot;<br/><br/>кілька прикладів нижче:</p>&mdash; Мішель Хуан (@michellehuang42) <a href="https://twitter.com/michellehuang42/status/1597005489413713921?ref_src=twsrc%5Etfw">27 листопада 2022 р.</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-Prompt from the Tweet:
+Запит із твіту:
 ```markdown
-The following is a conversation with Present Michelle (age [redacted]) and Young Michelle (age 14).
+Нижче наведено розмову з дорослою Мішель (вік [redacted]) і юною Мішель (14 років).
 
-Young Michelle has written the following journal entries:
-[diary entries here]
+Юна Мішель вносила такі записи в щоденнику:
+[записи в щоденнику тут]
 
-Present Michelle: [type your questions here]
+Доросла Мішель: [введіть тут свої запитання]
 ```
 
-The author does note that diary entries can reach the token limit. In this case you could pick a select few entries or try to summarize several entries.
+Автор зазначає, що записи в щоденнику можуть досягати обмеження токенів. У цьому випадку ви можете вибрати кілька записів або спробувати коротко узагальнити декілька записів.
 
-## Implementation
+## Імплементація
 
-I will walk through coding a simple GPT-3 powered chatbot in Python. Including GPT-3 in an app you are building is incredibly easy using the OpenAI API. You will need to create an account on OpenAI and get an API key. Check out their docs <a href="https://beta.openai.com/docs/introduction">here.</a>
+Я розповім про кодування простого чат-бота на базі GPT-3 мовою Python. Включити GPT-3 у програму, яку ви створюєте, неймовірно легко за допомогою OpenAI API. Вам потрібно буде створити обліковий запис на OpenAI та отримати ключ API. Перегляньте їхні документи <a href="https://beta.openai.com/docs/introduction">тут.</a>
 
-Overview of what we need to do:
+Огляд того, що нам потрібно зробити:
 
-1. Format user input into a chatbot prompt for GPT-3
-2. Get the chatbot response as a completion from GPT-3
-3. Update the prompt with both the user's input and the chatbot's response
-4. Loop
+1. Відформатуйте введені користувачем вхідні дані в запит чат-бота для GPT-3
+2. Отримайте відповідь чат-бота як завершення GPT-3
+3. Оновіть запит як введенням даних користувача, так і відповіддю чат-бота
+4. Цикл
 
-Here is the prompt I will use. We can use python to replace <conversation history\> and <user input\> with their actual values.
+Ось запит, який я використаю. Ми можемо використовувати мову Python для заміни <conversation history\> і <user input\> для їхніх фактичних значень.
 
 ```python
 chatbot_prompt = """
-    As an advanced chatbot, your primary goal is to assist users to the best of your ability. This may involve answering questions, providing helpful information, or completing tasks based on user input. In order to effectively assist users, it is important to be detailed and thorough in your responses. Use examples and evidence to support your points and justify your recommendations or solutions.
+    Як для просунутого чат-бота, ваша головна мета — якнайкраще допомагати користувачам. Це може охоплювати відповіді на запитання, надання корисної інформації або виконання завдань на основі вхідних даних користувача. Щоб ефективно допомагати користувачам, важливо бути детальними та ґрунтовними у своїх відповідях. Використовуйте приклади та докази, щоб підтвердити свої думки та обґрунтувати свої рекомендації чи рішення.
 
     <conversation history>
 
@@ -118,14 +118,14 @@ chatbot_prompt = """
     Chatbot:"""
 ```
 
-I keep track of both the next user input and the previous conversation. New input/output between chatbot and user is appended each loop.
+Я відстежую як наступні вхідні дані користувача, так і попередній діалог. Новий обмін даними між чат-ботом і користувачем додається до кожного циклу.
 ```python
 import openai
 
 openai.api_key = "YOUR API KEY HERE"
 model_engine = "text-davinci-003"
 chatbot_prompt = """
-As an advanced chatbot, your primary goal is to assist users to the best of your ability. This may involve answering questions, providing helpful information, or completing tasks based on user input. In order to effectively assist users, it is important to be detailed and thorough in your responses. Use examples and evidence to support your points and justify your recommendations or solutions.
+Як для просунутого чат-бота, ваша головна мета — якнайкраще допомагати користувачам. Це може охоплювати відповіді на запитання, надання корисної інформації або виконання завдань на основі вхідних даних користувача. Щоб ефективно допомагати користувачам, важливо бути детальними та ґрунтовними у своїх відповідях. Використовуйте приклади та докази, щоб підтвердити свої думки та обґрунтувати свої рекомендації чи рішення.
 
 <conversation history>
 
@@ -163,10 +163,10 @@ def main():
 main()
 ```
 
-<a href="https://gist.github.com/jayo78/79d8834e6e31bf942c7b604e1611b68d">Here is a link</a> to the full code for a simple chatbot.
+<a href="https://gist.github.com/jayo78/79d8834e6e31bf942c7b604e1611b68d">Ось посилання</a> на повний код простого чат-бота.
 
 <p></p>
 
-Now all that's left is to build a nice front-end that users can interact with!
+Тепер усе, що залишилося, це створити гарний інтерфейс, із яким користувачі зможуть взаємодіяти!
 
-Written by [jayo78](https://twitter.com/jayo782).
+Автор: [jayo78](https://twitter.com/jayo782).
