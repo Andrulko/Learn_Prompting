@@ -4,15 +4,15 @@ sidebar_position: 6
 
 # Prompt IDE
 
-[Prompt IDE](https://prompt.vizhub.ai)(@strobelt2022promptide) is a research tool for prompt engineering.
+[Prompt IDE](https://prompt.vizhub.ai)(@strobelt2022promptide) – це пошуковий інструмент інженерії запитів.
 
 
-import Image from '@site/docs/assets/tooling/promptide.png';
+Зображення з '@site/docs/assets/tooling/promptide.png';
 
 <div style={{textAlign: 'center'}}>
   <img src={Image} style={{width: "750px"}} />
 </div>
 
-## Features
+## Характеристики
 
-Prompt IDE allows for automated testing on datasets.
+Prompt IDE дозволяє проводити автоматизоване тестування на основі наборів даних.
