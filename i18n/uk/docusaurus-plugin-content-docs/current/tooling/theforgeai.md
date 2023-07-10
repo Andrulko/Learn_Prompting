@@ -4,15 +4,15 @@ sidebar_position: 23
 
 # The Forge AI
 
-[The Forge AI](https://theforgeai.com/) is a powerful prompt IDE to build & monetize applications. You can use varied types of configurable inputs, define conditional flows, generate text and images using different models. (Many more features to come).
+[The Forge AI](https://theforgeai.com/) –це потужне ІСР для запитів, яке використовують для створення й монетизації застосунків. Тут можна вводити різні типи налаштовуваних даних, визначати умовні процеси, генерувати текст і зображення за допомогою різних моделей. (У майбутньому з’явиться багато інших функцій).
 
 
-import Image from '@site/docs/assets/tooling/theforgeai.png';
+Зображення з '@site/docs/assets/tooling/theforgeai.png';
 
 <div style={{textAlign: 'center'}}>
   <img src={Image} style={{width: "1200px"}} />
 </div>
 
-## Features
+## Характеристики
 
-When the App is done you can then share it privately or publicly for anyone to run. Applications can also be monetized on the marketplace by selling tokens or via subscription.
+Коли застосунок створено, Ви зможете поділитися ним приватно чи опублікувати для загального користування. Застосунки також можна монетизувати через інтернет-магазини, продаючи токени або зробивши платну підписку.
