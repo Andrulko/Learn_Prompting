@@ -4,22 +4,22 @@ sidebar_position: 22
 
 # PromptSandbox.io
 
-[PromptSandbox.io](https://PromptSandbox.io) is a node-based visual programming platform to design and execute workflows with OpenAI APIs.
+[PromptSandbox.io](https://PromptSandbox.io) – це платформа візуального програмування з відкритим вихідним кодом для розробки та виконання робочих процесів за допомогою ключів API для OpenAI.
 
-Explore the repository on [GitHub](https://github.com/eg9y/promptsandbox.io/).
+Перегляньте репозиторій на [GitHub](https://github.com/eg9y/promptsandbox.io/).
 
-Watch the guided tour in this [demo video](https://www.youtube.com/watch?v=CBPw7FXtaEU).
+Подивіться це [ознайомче відео](https://www.youtube.com/watch?v=CBPw7FXtaEU).
 
-import Image from '@site/docs/assets/tooling/promptsandbox.png';
+Зображення з '@site/docs/assets/tooling/promptsandbox.png';
 
 <div style={{textAlign: 'center'}}>
   <img src={Image} style={{width: "750px"}} />
 </div>
 
-## Features
+## Характеристики
 
-- Versatile Nodes: Utilize diverse node types, including OpenAI APIs, loops, conditionals, and text I/O, to craft complex workflows.
-- Project Organization: Easily create, manage, and access multiple projects within the platform.
-- Dynamic Chat: Interact with and test workflows through an intuitive chat interface.
-- Collaborative Gallery: Explore and share projects with the community in the project gallery.
-- Open Access: Enjoy free, signup-free access to visual programming with OpenAI APIs.
+- Універсальні ланки: використовуйте різні типи ланок, зокрема ключі API для OpenAI, цикли, умови та текстові вхідні/вихідні дані, щоб створювати складні робочі процеси.
+- Організація проєкту: з легкістю створюйте проєкти, управляйте ними та отримуйте доступ до кількох проєктів на платформі.
+- Активний чат: взаємодійте з робочими процесами та тестуйте їх через інтуїтивно зрозумілий інтерфейс чату.
+- Спільна галерея: опрацьовуйте проєкти та діліться ними зі спільнотою в галереї проєктів.
+- Відкритий доступ: насолоджуйтесь безкоштовним доступом до візуального програмування за допомогою ключів API для OpenAI без реєстрації.
