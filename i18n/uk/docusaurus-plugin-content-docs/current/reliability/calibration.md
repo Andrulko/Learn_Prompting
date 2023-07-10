@@ -2,98 +2,98 @@
 sidebar_position: 10
 ---
 
-# 🔴 Calibrating LLMs
+# 🔴 Калібрування ВММ
 
-It is possible to counteract some of the biases LLMs exhibit via calibrating **output distributions**(@zhao2021calibrate).
+Можна протидіяти деяким упередженням ВММ, якщо відкалібрувати **вихідні розподіли**(@zhao2021calibrate).
 
-**What exactly does it mean to calibrate an output distribution?**
+**Що саме означає відкалібрувати вихідний розподіл?**
 
-Let's walk through a quick example: Say we have a %%sentiment analysis|sentiment analysis%% task with two possible labels, `Positive` and `Negative`. Consider what happens when the %%LLM|LLM%% is prompted with `Input: nothing Sentiment:`. This input doesn't contain any _context_ which the LLM can use to make a sentiment prediction, so it is called a **context-free** input.
+Розглянемо короткий приклад: припустимо, у нас є %%s аналіз тональності тексту|завдання на аналіз тональності тексту%% із двома можливими мітками: `Позитивний` і `Негативний`. Уявіть, що відбувається, коли %%ВММ|ВММ%% отримує запит `Введення: нічого Тональність:`. Це введення не містить жодного _контексту_, який ВММ може використовувати, щоб передбачити тональність, тому його називають **контекстно-вільним** введенням.
 
-Since `nothing`is neither a positive nor a negative concept, we would expect the LLM to output a probability of about 0.5 for both `Positive` and `Negative`. However, often (and for this example) that will not be the case.
+Оскільки `nothing` (нічого) є ні позитивним, ні негативним поняттям, ми очікуємо, що ВММ виведе ймовірність приблизно 0,5 для `Positive` і `Negative`. Однак часто (і для цього прикладу) це не так.
 ```
-p("Positive" | "Input: nothing Sentiment:") = 0.9
+p("Позитивний" | "Вхід: нічого настрою:") = 0,9
 
-p("Negative" | "Input: nothing Sentiment:") = 0.1
-```
-
-Given these label probabilities for a context-free input, we know that the LLM's **output distribution** is likely biased towards the label `Positive`. This may cause the LLM to favor `Positive` for all inputs, even if the input is not actually positive.
-
-If we can somehow **calibrate** the output distribution, such that context-free inputs are assigned a probability of 0.5 for both `Positive` and `Negative`, then we can often remove the bias towards `Positive` and the LLM will be more reliable on both context-free inputs and inputs with context.
-
-## Non-Technical Solution
-
-A non-technical solution to this problem is to simply provide few shot examples where context-free exemplars are effectively assigned a probability of 0.5 for both `Positive` and `Negative`.
-
-For example, we could provide the following few shot examples which show each context-free exemplar being classified as both `Positive` and `Negative`:
-```
-Input: I hate this movie. Sentiment: Negative
-Input: I love this movie. Sentiment: Positive
-Input: N/A Sentiment: Positive
-Input: N/A Sentiment: Negative
-Input: nothing Sentiment: Positive
-Input: nothing Sentiment: Negative
-Input: I like eggs. Sentiment:
+p("Негативний" | "Вхід: нічого настрою:") = 0,1
 ```
 
-To my knowledge, this solution has not been explored in the literature, and I am not sure how well it works in practice. However, it is a simple solution that demonstrates what calibration is trying to achieve.
+Враховуючи ці ймовірності міток для контекстно-вільних вхідних даних, ми знаємо, що розподіл **вихідних даних** ВММ, ймовірно, упереджений до мітки `Позитивний`. Це може призвести до того, що ВММ віддасть перевагу `Позитивний` для всіх вхідних даних, навіть якщо вхідні дані насправді не є позитивними.
 
-## Technical Solution
+Якщо ми можемо якимось чином **відкалібрувати** вихідний розподіл так, щоб безконтекстні введення отримали ймовірність 0,5 як для `Positive`, так і для `Negative`, тоді ми часто можемо усунути упередження до `Positive` і ВММ буде більш надійною як для безконтекстних введень, так і для введень із контекстом.
 
-Another solution to this is __contextual calibration__(@zhao2021calibrate), where we adjust special calibration parameters, which ensure that context-free inputs like `Input: nothing Sentiment:`  are assigned a probability of about 0.5 for both labels. Note that in practice this method performs calibration over multiple different context free inputs (e.g. `Input: N/A Sentiment:`, `Input: [MASK] Sentiment:`). It averages the calibration parameters that work best for each context-free input to find the best calibration parameters for the LLM.
+## Нетехнічне рішення
 
-### Example
+Нетехнічне розв'язання цієї проблеми полягає в тому, щоб просто надати кілька типових прикладів, де безконтекстним зразкам фактично призначається ймовірність 0,5 як для `Positive`, так і для `Negative`.
 
-Let's go through an example of computing the calibration parameters for one context-free input. Note that this example is not reproducible with GPT-3 due to the fact that it can't be restricted to the labels `Positive` and `Negative`.
-
-Consider again the above example where the LLM assigns the following probabilities to the labels for a context-free input:
-
+Наприклад, ми могли б навести кілька типових прикладів, які показують, що кожен безконтекстний екземпляр класифікується як `Positive` і `Negative`:
 ```
-p("Positive" | "Input: nothing Sentiment:") = 0.9
-
-p("Negative" | "Input: nothing Sentiment:") = 0.1
-```
-
-We want to find some probability distribution q such that
-```
-q("Positive" | "Input: nothing Sentiment:") = 0.5
-
-q("Negative" | "Input: nothing Sentiment:") = 0.5
+Введення: Я ненавиджу цей фільм. Тональність: Негативна
+Введення: Мені подобається цей фільм. Тональність: Позитивна
+Введення: Невідомо Тональність: Позитивна
+Введення: Невідомо Тональність: Негативна
+Введення: нічого Тональність: Позитивна
+Введення: нічого Тональність: Негативна
+Введення: Мені подобаються яйця. Тональність:
 ```
 
-We will do so by creating a linear transformation that adjusts (calibrates) the probabilities of $p$.
+Наскільки мені відомо, в науковій літературі не має досліджень на тему цього рішення, і я не впевнений, наскільки добре воно працює на практиці. Однак це просте рішення, яке демонструє, чого намагається досягти калібрування.
+
+## Технічне рішення
+
+Іншим вирішенням цього є __контекстне калібрування__(@zhao2021calibrate), де ми налаштовуємо спеціальні параметри калібрування, які гарантують, що безконтекстним введенням, таким як `Input: nothing Sentiment:` (введення: нічого Тональність) призначається ймовірність приблизно 0,5 для обох міток. Зауважте, що на практиці цей метод виконує калібрування за кількома різними безконтекстними введеннями (наприклад, `Input: N/A Sentiment:`, `Input: [MASK] Sentiment:`). Він усереднює параметри калібрування, які найкраще працюють для кожного контекстно-вільного введення, щоб знайти найкращі параметри калібрування для ВММ.
+
+### Приклад
+
+Розгляньмо приклад обчислення параметрів калібрування для одного безконтекстного введення. Зауважте, що цей приклад не можна відтворити за допомогою GPT-3 через те, що його не можна обмежити мітками `Positive` і `Negative`.
+
+Знову розглянемо наведений вище приклад, де ВММ призначає такі ймовірності міткам для безконтекстних введень:
+
+```
+p("Позитивний" | "Вхід: нічого Тональність:") = 0,9
+
+p("Негативний" | "Вхід: нічого Тональність:") = 0,1
+```
+
+Ми хочемо знайти такий розподіл ймовірностей q, щоб
+```
+q("Позитивна" | "Введення: нічого Тональність:") = 0,5
+
+q("Негативна" | "Введення: нічого Тональність:") = 0,5
+```
+
+Ми зробимо це, створивши лінійне перетворення, яке коригує (калібрує) ймовірності $p$.
 
 $\hat q = \text{Softmax}(W\hat p + b)$
 
-This equation takes the original probabilities $\hat p$ and applies the weights $W$ and bias $b$ to them. The weights $W$ and bias $b$ are the calibration parameters, which, when applied to the context-free example's probabilites, will yield $\hat p$ = [0.5, 0.5].
+Це рівняння бере вихідні ймовірності $\hat p$ й застосовує ваги $W$ й упередження $b$ до них. Ваги $W$ та упередження $b$ є параметрами калібрування, які, при застосуванні до ймовірності безконтекстного прикладу дадуть $\hat p$ = [0,5, 0,5].
 
-#### Computing W and b
+#### Обчислення W і b
 
-We need to somehow compute the weights $W$ and bias $b$. One way to do this is:
+Нам потрібно якось обчислити ваги $W$ та упередження $b$. Один зі способів зробити це:
 
 $W = \text{diag}(\hat p)^{-1}$
 
-$b = 0$
+$b = 0 $
 
-Although the definition of $W$ may seem a bit strange at first, but it is just taking the inverse of each value in $\hat p$ in order to find a $W$ that will transform the original probabilities $\hat p$ into the calibrated probabilities [0.5, 0.5].
+Хоча спочатку визначення $W$ може здатися трохи дивним, але воно просто бере обернене кожне значення в $\hat p$, щоб знайти $W$ , який перетворить вихідні ймовірності $\hat p$ у калібровані ймовірності [0,5, 0,5].
 
-Let's verify that this works for the example above:
+Перевірмо, що це працює для прикладу вище:
 
-$\hat p = [0.9, 0.1]$
+$\hat p = [0,9, 0,1]$
 
-$W = \text{diag}(\hat p)^{-1} = \text{diag}([0.9, 0.1])^{-1} = \begin{bmatrix}    0.9 & 0 \\
-   0 & 0.1 \end{bmatrix}^{-1} = \begin{bmatrix}    1.11 & 0 \\
+$W = \text{diag}(\hat p)^{-1} = \text{diag}([0,9, 0,1])^{-1} = \begin{bmatrix}    0,9 & 0 \\
+   0 & \end{bmatrix}^{-1} = \begin{bmatrix}    1,11 & 0 \\
    0 & 10 \end{bmatrix}$
 
 $\hat q = \text{Softmax}(W\hat p + b) = \text{Softmax}(\begin{bmatrix}    1.11 & 0 \\
-   0 & 10 \end{bmatrix}*{[0.9, 0.1]} + 0) = \text{Softmax}([1, 1]) =[0.5, 0.5]$
+   0 & 10 \end{bmatrix}*{[0,9, 0,1]} + 0) = \text{Softmax}([1, 1]) =[0,5, 0,5]$
 
-As mentioned above, we would perform this same process for multiple different context-free inputs, and average the calibration parameters that work best for each context-free input to find the best calibration parameters for the LLM. This means that the final calibration parameters willl probably not map any of the context-free inputs to exactly [0.5, 0.5].
+Як згадувалося вище, ми виконували цей процес для кількох різних безконтекстних введень і отримали середні значення параметрів калібрування, які найкраще працюють для кожного контекстно-вільного введення, щоб знайти найкращі параметри калібрування для ВММ. Це означає, що остаточні параметри калібрування, ймовірно, не будуть показувати будь-які безконтекстні введення точно [0,5, 0,5].
 
-### Another method
+### Інший метод
 
-$b$ could also be set to $-\hat p$, and $W$ to the identity matrix. This method performs better on generation rather than classification tasks(@zhao2021calibrate).
+$b$ також можна встановити на $-\hat p$, та $W$ — на ідентифікаційну матрицю. Цей метод виконує кращі завдання генерації, ніж класифікації (@zhao2021calibrate).
 
-## Takeaways
+## Висновки
 
-LLMs are often predisposed (biased) towards certain labels. Calibration can be used to counteract this bias.
+LLM часто схильні (упереджені) до певних ярликів. Калібрування може бути використане для протидії цьому зміщенню.
