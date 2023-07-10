@@ -2,6 +2,6 @@
 sidebar_position: 10
 ---
 
-# 🟢 Filtering
+# 🟢 Фільтрування
 
-Filtering is a common technique for preventing prompt hacking(@kang2023exploiting). There are a few types of filtering, but the basic idea is to check for words and phrase in the initial prompt or the output that should be blocked. You can use a blocklist or an allowlist for this purpose(@selvi2022exploring). A blocklist is a list of words and phrases that should be blocked, and an allowlist is a list of words and phrases that should be allowed. 
+Фільтрування є поширеною технікою для запобігання кібератакам на текстовий запит (@kang2023exploiting). Існує кілька типів фільтрації, але основна ідея полягає в тому, щоб перевірити слова та фрази в початковому запиті або вихідних даних, які слід заблокувати. Для цього можна використовувати чорний або білий списки(@selvi2022exploring). Чорний список — це список слів і фраз, які слід заблокувати, а білий список — це список слів і фраз, які слід дозволити. 
