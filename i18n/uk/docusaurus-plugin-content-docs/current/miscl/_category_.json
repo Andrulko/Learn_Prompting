@@ -1,8 +1,8 @@
 {
-  "label": "🎲 Miscellaneous",
+  "label": "🎲 Різне",
   "position": 85,
   "link": {
-    "type": "generated-index",
-    "description": "Miscellaneous"
+    "type": "параметр генерації",
+    "description": "Різне"
   }
 }
