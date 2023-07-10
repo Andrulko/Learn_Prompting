@@ -1,8 +1,8 @@
 {
-  "label": "🟢 Offensive Measures",
+  "label": "🔓 Злом запиту",
   "position": 50,
   "link": {
-    "type": "generated-index",
-    "description": "Hacking, but for PE"
+    "type": "параметр генерації",
+    "description": "Хакерство, але для інженерії запитів"
   }
 }
