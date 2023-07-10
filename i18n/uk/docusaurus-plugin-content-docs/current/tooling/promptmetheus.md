@@ -4,14 +4,14 @@ sidebar_position: 20
 
 # Promptmetheus
 
-[Promptmetheus](https://promptmetheus.com) helps you compose, test, and evaluate one-shot prompts for the OpenAI platform that predictably transform input to output.
+[Promptmetheus](https://promptmetheus.com) допомагає поєднувати, тестувати та оцінювати разові запити на платформі OpenAI, яка прогнозовано перетворює вхідні дані на вихідні.
 
-import Image from '../../assets/tooling/promptmetheus.jpg';
+Зображення з '../../assets/tooling/promptmetheus.jpg';
 
 <div style={{textAlign: 'center'}}>
   <img src={Image} style={{width: "750px"}} />
 </div>
 
-## Features
+## Характеристики
 
-In the Promptmetheus playground you can compose prompts from individual blocks and test prompt variations with different model parameters. You can rate the different outputs and get visualizations for how each block performs. Prompts and outputs can easily be exported to .csv, .xls, and .json files. 
+На платформі Promptmetheus Ви можете складати запити з окремих блоків і тестувати варіанти запитів із різними параметрами моделі. Також – оцінювати різні результати та отримати візуалізацію того, як працює кожен блок. Запити та результати можна легко експортувати у файли форматів .csv, .xls і .json. 
