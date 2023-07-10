@@ -2,13 +2,13 @@
 sidebar_position: 5
 ---
 
-# 🟡 Prompt Ensembling
+# 🟡 Групування запитів
 
-Prompt ensembling is the concept of using multiple different prompts to try to answer the same question. There are many different approaches to this.
+Групування запитів – це концепція використання кількох різних запитів, щоб спробувати відповісти на одне запитання. Існує багато різних підходів до цього.
 
 ## DiVeRSe
 
-DiVeRSe(@li2022advance) ("**Di**verse **Ve**rifier on **R**easoning **S**t**e**ps") is a method that improves the reliability of answers in a threefold manner. It does this by 1) using multiple prompts to generate diverse completions, 2) using a verifier to distinguish good answers from bad answers, and 3) using a verifier to check the correctness of reasoning steps.
+DiVeRSe(@li2022advance) ("**Di**verse **Ve**rifier on **R**easoning **S**t**e**ps") — це метод, який утричі покращує достовірність відповідей. Він робить це за допомогою: 1) використання кількох запитів для генерування різноманітних результатів, 2) використання верифікатора для відрізнення хороших відповідей від поганих, 3) використання верифікатора для перевірки правильності кроків обґрунтування.
 
 
 import diverse from '@site/docs/assets/reliability/diverse.png';
@@ -18,63 +18,63 @@ import diverse from '@site/docs/assets/reliability/diverse.png';
 </div>
 
 <div style={{textAlign: 'center'}}>
-DiVeRSe (Li et al.)
+DiVeRSe (Li та ін.)
 </div>
 
-### Diverse Prompts
+### Різноманітність запитів
 
-DiVeRSe uses 5 different prompts a given input. To construct each prompt, they randomly sample a few exemplars from the training set. Here is an example of one such few-shot prompt (k=2), with exemplars taken from the [GSM8K benchmark](https://raw.githubusercontent.com/openai/grade-school-math/master/grade_school_math/data/train.jsonl)(@cobbe2021training). In practice, DiVeRSe uses 5 exemplars in prompts for this benchmark.
+DiVeRSe використовує 5 різних запитів для певних вхідних даних. Щоб створити кожен запит, вони випадковим чином відбирають кілька зразків із навчального набору. Ось приклад одного такого запиту (k=2), із прикладами, взятими з тесту [GSM8K](https://raw.githubusercontent.com/openai/grade-school-math/master/grade_school_math/data/train.jsonl)(@cobbe2021training). Фактично, у запитах для цього тесту DiVeRSe використовує 5 зразків.
 
 
 ```
-Q: Natalia sold clips to 48 of her friends in April, and then she sold half as many clips in May. How many clips did Natalia sell altogether in April and May?
-A: Natalia sold 48/2 = 24 clips in May.
-Natalia sold 48+24 = 72 clips altogether in April and May.
+П: Наталія продала 48 булавок своїм друзям у квітні, а потім у травні – удвічі менше. Скільки всього булавок продала Наталія за квітень і травень?
+В: Наталія продала 48/2 = 24 булавки в травні.
+Всього за квітень і травень Наталія продала 48+24 = 72 булавки.
 #### 72
-Q: Weng earns $12 an hour for babysitting. Yesterday, she just did 50 minutes of babysitting. How much did she earn?
-A: Weng earns 12/60 = $0.2 per minute.
-Working 50 minutes, she earned 0.2 x 50 = $10.
+П: Венг заробляє 12 доларів на годину, працюючи нянею. Вчора вона працювала лише 50 хвилин. Скільки вона заробила?
+В: Венг заробляє 12/60 = 0,2 долара за хвилину.
+Відпрацювавши 50 хвилин, вона заробила 0,2 х 50 = 10 доларів.
 #### 10
-Q: Betty is saving money for a new wallet which costs $100. Betty has only half of the money she needs. Her parents decided to give her $15 for that purpose, and her grandparents twice as much as her parents. How much more money does Betty need to buy the wallet?
-A:
+П: Бетті збирає гроші на новий гаманець, який коштує 100 доларів. У Бетті є лише половина потрібної суми. Її батьки вирішили дати їй на цю покупку 15 доларів, а дідусь і бабуся – удвічі більше, ніж батьки. Скільки ще грошей потрібно Бетті, щоб купити гаманець?
+В:
 ```
 
-After generating 5 different prompts like above, DiVeRSe samples 20 reasoning paths for each (temperature = 0.5). Here are a few example completions of the above prompt. Note that the answers are not always correct.
+Після генерації 5 різних запитів, як описано вище, DiVeRSe вибирає 20 шляхів обґрунтування для кожного (температура = 0.5). Ось кілька прикладів відповіді на наведений вище запит. Зауважте, що відповіді не завжди правильні.
 
 
 ```text
 <!-- highlight-start -->
-Betty has 0.5*100 = $50.
-Then she gets 15 more = $65.
-Then she gets 2*15 = $90.
-She needs 100-90 = $10 more.
+Бетті має 0,5 *100 = 50 доларів.
+Потім вона отримує ще 15 = 65 доларів.
+Тоді вона отримує 2*15 = 90 доларів.
+Їй потрібно ще 100-90 = 10 доларів.
 #### 10
 <!-- highlight-end -->
 ```
 
 ```text
 <!-- highlight-start -->
-A: Betty has 0.5*100 = $500.
-Then she gets 15 more = $650.
-Then she gets 2*15 = $900.
-She needs 100-90 = $1000 more.
+А: Бетті має 0,5*100 = 500 доларів.
+Тоді вона отримує ще 15 = 650 доларів.
+Тоді вона отримує 2*15 = 900 доларів.
+Їй потрібно ще 100-90 = 1000 доларів.
 #### 1000
 <!-- highlight-end -->
 ```
 
-At this point, DiVeRSe has generated 100 different completions.
+На цей момент DiVeRSe створив 100 різних результатів.
 
-### Voting Verifier
+### Верифікатор голосування
 
-Now, we could just take the majority answer, like Self-Consistency(@mitchell2022enhancing) does.
+Тепер ми можемо обрати результат більшості, як це робить Self-Consistency (@mitchell2022enhancing).
 
-However, DiVeRSe proposes a much more complicated method, which they call a _voting verifier_.
+Однак DiVeRSe пропонує набагато складніший метод, який вони називають _верифікатором голосування_.
 
-At test time, using the voting verifier is a two step process. First, the verifier (a neural network) assigns a 0-1 score to each completion based on how likely it is to be correct. Then, the 'voting' component sums all of the scores over different answers and yields the final answer.
+Під час тестування процес використання верифікатора голосувань складається з двох етапів. Спершу верифікатор (нейронна мережа) призначає оцінку 0-1 кожному результату на основі ймовірності, що він правильний. Потім компонент «голосування» підсумовує всі бали за різні відповіді та дає остаточну відповідь.
 
-#### Example
+#### Приклад
 
-Here is a small example. Say we have the following completions for the prompt `What is two plus two?`:
+Ось невеликий приклад. Скажімо, ми отримали такі результати за запитом `Скільки буде два плюс два?`:
 
 ```text
 <!-- highlight-start -->
@@ -84,43 +84,43 @@ Here is a small example. Say we have the following completions for the prompt `W
 
 ```text
 <!-- highlight-start -->
-two + 2 = 5
+два + 2 = 5
 <!-- highlight-end -->
 ```
 
 ```text
 <!-- highlight-start -->
-I think 2+2 = 6
+Я думаю, 2+2 = 6
 <!-- highlight-end -->
 ```
 
 ```text
 <!-- highlight-start -->
-two plus two = 4
+два плюс два = 4
 <!-- highlight-end -->
 ```
 
 ```text
 <!-- highlight-start -->
-It is 5
+Це 5
 <!-- highlight-end -->
 ```
 
-The verifier will read each completion and assign a score to it. For example, it might assign the scores: 0.9, 0.1, 0.2, 0.8, 0.3 respectively. Then, the voting component will sum the scores for each answer.
+Верифікатор прочитає кожен результат і поставить йому оцінку. Наприклад, він може призначити бали: 0.9, 0.1, 0.2, 0.8, 0.3 відповідно. Потім компонент голосування підсумовує бали за кожну відповідь.
 
 ```
-score(4) = 0.9 + 0.8 = 1.7
-score(5) = 0.1 + 0.3 = 0.4
-score(6) = 0.2
+бал (4) = 0,9 + 0,8 = 1,7
+бал (5) = 0,1 + 0,3 = 0,4
+бал (6) = 0,2
 ```
 
-The final answer is 4, since it has the highest score.
+Остаточна відповідь 4, оскільки вона має найвищий бал.
 
-**But how is the verifier trained?**
+**Але як навчають верифікатор?**
 
-The verifier is trained with a slightly complex loss function, which I will not cover here. Read section 3.3 of the paper for more details(@li2022advance).
+Верифікатор навчений роботі зі складнішою функцією втрати, яку я не розглядатиму тут. Щоб дізнатися більше, прочитайте розділ 3.3 статті (@li2022advance).
 
-## Ask Me Anything (AMA) Prompting
+## Запит «Запитайте мене про будь-що» (AMA)
 
 import ama from '@site/docs/assets/reliability/AMA_Prompting.jpg';
 
@@ -128,36 +128,36 @@ import ama from '@site/docs/assets/reliability/AMA_Prompting.jpg';
   <img src={ama} style={{width: "750px"}} />
 </div>
 
-Ask Me Anything (AMA) prompting(@arora2022ama) is a similar approach to DiVeRSe. However, both its multiple prompt step and its answer aggregation step differ signifigantly. The core idea of AMA is to use a LLM to generate multiple prompts, instead of just using different few-shot exemplars.
+Запит «Запитайте мене про будь-що» (AMA) (@arora2022ama) — це підхід, подібний до DiVeRSe. Однак, і його крок з кількома запитами, і крок агрегування відповідей суттєво відрізняються. Основна ідея AMA полягає в тому, щоб використовувати ВММ для генерації кількох запитів замість того, щоб просто використовувати різні приклади з кількома ілюстраціями.
 
-### Multiple Prompts
+### Кілька запитів
 
-AMA shows that you can take a question and reformat it in multiple ways to create different prompts. For example, say you are scraping a bunch of websites for information on animals and want to only record ones that live in North America. Let's construct a prompt to determine this.
+AMA показує, що ви можете взяти запитання та переформатувати його різними способами, щоб створити різні підказки. Наприклад, ви шукаєте інформацію про тварин на одному з вебсайтів і хочете записати лише тих, які живуть у Північній Америці. Створімо запит, щоб визначити це.
 
-Given the following passage from Wikipedia:
-
-```text
-The Kermode bear, sometimes called the spirit bear (Ursus americanus kermodei), is a subspecies of the American black bear and lives in the Central and North Coast regions of British Columbia, Canada.
-```
-
-You can format this task into a prompt like so:
+Враховуючи такий уривок із Вікіпедії:
 
 ```text
-Is the following claim True or False given the context?
-
-Context: The Kermode bear, sometimes called the spirit bear (Ursus americanus kermodei), is a subspecies of the American black bear and lives in the Central and North Coast regions of British Columbia, Canada.
-Claim: This animal lives in North America
-Answer:
+Кермодський ведмідь, який іноді називають ведмідь-дух (Ursus americanus kermodei), є підвидом американського чорного ведмедя та мешкає в районах центрального та північного узбережжя Британської Колумбії, Канаді.
 ```
 
-This is a bit of an odd formulation. Why not just use the following simpler prompt?
+Ви можете відформатувати це завдання у запит таким чином:
 
 ```text
-Context: The Kermode bear, sometimes called the spirit bear (Ursus americanus kermodei), is a subspecies of the American black bear and lives in the Central and North Coast regions of British Columbia, Canada.
-Question: Does this animal lives in North America?
+Правильне чи хибне наступне твердження з урахуванням контексту?
+
+Контекст: Кермодський ведмідь, якого іноді називають ведмідь-дух (Ursus americanus kermodei), є підвидом американського чорного ведмедя та мешкає в районах центрального та північного узбережжя Британської Колумбії, Канаді.
+Твердження: Ця тварина живе в Північній Америці
+Відповідь:
 ```
 
-Well, by formulating the question in this special way, we can generate different prompts. Our first step here will be to take the claim `This animal lives in North America` and reformat it into different questions, which are basically asking the same thing. To do this, we will pass the claim through prompts like those in the below image.
+Це трохи дивне формулювання. Чому б не використати простіший запит?
+
+```text
+Контекст: Кермодський ведмідь, якого іноді називають «Ведмедем-духом» (Ursus americanus kermodei), є підвидом американського чорного ведмедя, який мешкає в районах центрального та північного узбережжя Британської Колумбії (Канада).
+Питання: Чи живе ця тварина в Північній Америці?
+```
+
+Ну, формулюючи питання таким особливим чином, ми можемо генерувати різні запити. Нашим першим кроком буде взяти твердження `Ця тварина живе в Північній Америці` і переформатувати його в різні запитання, які в основному запитують те саме. Для цього ми передамо претензію через запити, як на зображенні нижче.
 
 import ama_multi from '@site/docs/assets/reliability/AMA_multiprompting.png';
 
@@ -165,68 +165,68 @@ import ama_multi from '@site/docs/assets/reliability/AMA_multiprompting.png';
   <img src={ama_multi} style={{width: "800px"}} />
 </div>
 
-This might output:
-1. Was the animal living in North America?
-2. Does the animal live in North America?
-3. Where does the animal live?
+Це може вивести:
+1. Жила тварина жила в Північній Америці?
+2. Чи живе тварина в Північній Америці?
+3. Де живе тварина?
 
-The idea behind this is to create different *views* of the task. We then apply each to the given context like so:
-
-```text
-Context: The Kermode bear, sometimes called the spirit bear (Ursus americanus kermodei), is a subspecies of the American black bear and lives in the Central and North Coast regions of British Columbia, Canada.
-Question: Was the animal living in North America?
-```
-
-Then, we can generate answers for each:
-
-1. `Yes it was`
-2. `Yes it does`
-3. `North America`
-
-These are *intermediate* answers. We need to map them to task labels (e.g. Yes or No).
-
-We can do this by passing the intermediate answers through a prompt like the following:
+Ідея цього полягає в тому, щоб з різних боків *глянути на це* завдання. Потім ми застосовуємо кожен до заданого контексту так:
 
 ```text
-Select the correct category.
-
-"Categories":
-- Yes, North America
-- No, not North America
-
-"Yes it was" fits category:
+Контекст: Кермодський ведмідь, якого іноді називають ведмідь-дух (Ursus americanus kermodei), є підвидом американського чорного ведмедя та мешкає в районах центрального та північного узбережжя Британської Колумбії, Канаді.
+Питання: Чи жила тварина в Північній Америці?
 ```
 
-Now we can get our output answers.
+Тоді ми можемо створити відповіді для кожного:
 
-1. `Yes, North America`
-2. `Yes, North America`
-3. `Yes, North America`
+1. `Так, жила`
+2. `Так, живе`
+3. `Північна Америка`
 
-Here, they all agree, so we can just take the first answer. However, if they disagreed, we could use the AMA aggregation step to get a final answer.
+Це *проміжні* відповіді. Нам потрібно зіставити їх із мітками завдань (наприклад, «Так» або «Ні»).
 
-### Answer Aggregation
+Ми можемо зробити це, передавши проміжні відповіді через такий запит:
 
-AMA uses a very complicated strategy for aggregating answers (more so than DiVeRSe) instead of simply taking the majority answer. To understand why the majority answer may be a poor choice, consider two of the questions we generated before:
+```text
+Виберіть правильну категорію.
 
-1. Was the animal living in North America?
-2. Does the animal live in North America?
+"Категорії":
+- Так, Північна Америка
+- Ні, не Північна Америка
 
-They are extremely similar, so will likely generate the same result. Since the questions are so similar, they will effectively bias the end result. To deal with this, AMA relies on weak supervision and complex mathematics in order to estimate dependencies between different prompts it creates, and then uses this to weight them appropriately.
+"Так, жила відповідає категорії:
+```
 
-So, for the three questions we generated, it might assign weights of 25%, 25%, and 50%, since the first two are so similar.
+Тепер ми можемо отримати вихідні відповіді.
 
-Although AMA's aggregation strategy is powerful, it is so complicated that I will not cover it here. Read section 3.4 of the paper for more details(@arora2022ama).
+1. `Так, Північна Америка`
+2. `Так, Північна Америка`
+3. `Так, Північна Америка`
 
-### Results
+Тут усі відповіді збігаються, тому ми можемо просто взяти першу відповідь. Однак, якщо вони не збігаються, ми можемо перейти до етапу агрегування AMA, щоб отримати остаточну відповідь.
 
-- With this prompting strategy, AMA is able to use GPT-J-6B(@wange2021gptj) to outperform GPT-3.
+### Агрегація відповідей
 
-- AMA is better on questions where given context contains the answer.
+AMA використовує дуже складну стратегію для агрегування відповідей (більше, ніж DiVeRSe) замість того, щоб просто брати відповідь більшості. Щоб зрозуміти, чому відповідь більшості може бути поганим вибором, розглянемо два питання, які ми створили раніше:
 
-## Takeaways
+1. Чи жила тварина в Північній Америці?
+2. Чи живе тварина в Північній Америці?
 
-Ensembling methods are very powerful. They can be used to improve the performance of any model, and can be used to improve the performance of a model on a specific task.
+Вони дуже схожі, тому, швидше за все, вони дадуть однаковий результат. Оскільки питання дуже схожі, вони фактично вплинуть на кінцевий результат. Щоб впоратися з цим, AMA покладається на слабкий контроль і складну математику, щоб оцінити залежності між різними запитами, які вона створює, а потім використовує це для відповідного їх зважування.
 
-In practice, majority voting should be your go to strategy.
+Отже, для трьох запитань, які ми згенерували, він може призначити ваги 25%, 25% і 50%, оскільки перші два дуже схожі.
+
+Хоча стратегія агрегації AMA є потужною, вона настільки складна, що я не буду розповідати про неї тут. Щоб дізнатися більше, прочитайте розділ 3.4 статті (@arora2022ama).
+
+### Результати
+
+- Завдяки цій стратегії запитів AMA може використовувати GPT-J-6B(@wange2021gptj), щоб перевершити GPT-3.
+
+- AMA краще підходить для запитань, де відповідь міститься у контексті.
+
+## Висновки
+
+Методи групування дуже потужні. Вони можуть використовуватися для покращення продуктивності будь-якої моделі та моделі для конкретного завдання.
+
+На практиці мажоритарне голосування має бути вашою стратегією.
 
