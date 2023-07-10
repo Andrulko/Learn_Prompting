@@ -4,7 +4,7 @@ sidebar_position: 19
 
 # Dream Studio
 
-[Dream Studio](https://beta.dreamstudio.ai/dream) is a website for generating images with Stable Diffusion, a text to image model.
+[Dream Studio](https://beta.dreamstudio.ai/dream) – це вебсайт для створення зображень за допомогою Stable Diffusion, моделі для перетворення тексту в зображення.
 
 import Image from '@site/docs/assets/tooling/dreamstudio.png';
 
@@ -12,8 +12,8 @@ import Image from '@site/docs/assets/tooling/dreamstudio.png';
   <img src={Image} style={{width: "750px"}} />
 </div>
 
-## Features
+## Характеристики
 
-Dream studio's main feature is the ability to adjust various configuration parameters of the model, such as height/width of the generated image and steps/sampling algorithm. It allows for in/outpainting.
+Головною особливістю Dream studio є можливість налаштовувати різні параметри конфігурації моделі, такі як висота/ширина згенерованого зображення та кроки/алгоритм вибірки. Він дозволяє відновлювати/домальовувати зображення.
 
-It currently has an underdeveloped history view (it appears to save pixelated versions of the images to a browser cache, but there is no way to view them).
+Наразі він має недостатньо розроблений перегляд історії (здається, він зберігає піксельні версії зображень у кеш браузера, але можливості їх переглянути немає).
