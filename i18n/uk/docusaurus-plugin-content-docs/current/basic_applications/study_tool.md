@@ -2,74 +2,74 @@
 sidebar_position: 30
 ---
 
-# 🟢 Study Buddy
+# 🟢 Помічник у навчанні
 
-One of our favorite ways to use LLMs is as a study tool! In particular, it is useful for explaining confusing terms as well as quizzing you on test content.
+Один із наших улюблених способів використання великих мовних моделей (ВММ) — як інструмент для навчання! Зокрема, це корисно для пояснення заплутаних термінів, а також для опитування щодо змісту тексту.
 
-## Explaining Terms
+## Пояснення термінів
 
-I was recently reading a textbook about Cacti(@nobel2002cacti), and saw this passage:
+Нещодавно я читав підручник про кактуси(@nobel2002cacti) та побачив цей уривок:
 
 ```text
-Because of adaptations to xeric conditions and the presence of **less derived woods** in Pereskioideae, the Cactaceae is one of the most interesting families both anatomically and morphologically. 
+"Завдяки пристосуванню до ксеричних умов і наявності **менш похідної деревини** у Перескіоїдних, Кактусові є однією з найцікавіших родин як анатомічно, так і морфологічно". 
 ```
 
-I had no idea what **less derived woods** meant, and Google only showed research articles on it. I decided to use ChatGPT to find out what it meant. I gave it the following prompt, which is simple the passage from the book and my question.
+Я поняття не мав, що означає **менш похідна деревина**, а Google показував лише дослідницькі статті про це. Я вирішив використати ChatGPT, щоб дізнатися, що це означає. Я надіслав йому наступний запит, який складався з простого уривка з книги та мого запитання.
 
 ```text
-Because of adaptations to xeric conditions and the presence of less derived woods in Pereskioideae, the Cactaceae is one of the most interesting families both anatomically and morphologically. 
+"Завдяки пристосуванню до ксеричних умов і наявності менш похідної деревини у Перескіоїдних, Кактусові є однією з найцікавіших родин як анатомічно, так і морфологічно". 
 
-What do less derived woods mean?
+Що означає "менш похідна деревина"?
 
 // highlight-start
-In this context, "less derived woods" refers to the ancestral or primitive form of wood found in the early evolution of plants. These woods lack specialized structures and features that evolved later in more derived or advanced plants. In the Pereskioideae subfamily of the Cactaceae family, the wood is less derived compared to other subfamilies and is more similar to the wood found in non-cactus plants. The less derived wood in Pereskioideae is thought to be an adaptation to the more humid and less xeric environments in which these plants grow compared to other cacti.
+У цьому контексті «менш похідна деревина» належить до найпримітивнішої форми деревини, знайденої на ранніх етапах еволюції рослин. Ця деревина не має спеціалізованих структур і особливостей, які пізніше розвинулися в більш похідних або вдосконалених рослинах. У підродини Перескіоїдних родини Кактусових деревина є менш похідною у порівнянні з іншими підродинами та більше схожа на деревину рослин, які не є кактусовими. Вважається, що менш похідна деревина Перескіоїдних є адаптацією до більш вологих і менш ксеричних середовищ, в яких ростуть ці рослини у порівнянні з іншими кактусами.
 //highlight-end
 ```
 
-The model was able to answer my question quickly and I was able to continue with my reading.
+Система швидко відповіла на моє запитання, і я зміг продовжити читання.
 
-## Quizzing Yourself
+## Самоперевірка
 
-Another way to use LLMs as a study tool is to quiz yourself. If you have an upcoming calculus test, you could simply ask:
+Ще один спосіб використовувати великі мовні моделі (ВВМ) як інструмент для навчання – це перевірка себе. Якщо у вас скоро тест з математики, ви можете просто попросити:
 
 ```text
-Generate 5 calculus I quiz questions for me:
+Згенеруйте для мене 5 запитань на обчислення для тесту:
 
 // highlight-start
-1. What is the derivative of y = x3?
-2. Evaluate the indefinite integral of x3 + 5x2 + 7x + 4.
-3. What is the product rule for derivatives?
-4. Find the equation of the line tangent to y = x2 at the point (4, 16).
-5. What is the second derivative of y = x4?
+1. Знайдіть похідну функції: y = x3
+2. Обчисліть невизначений інтеграл від x3 + 5x2 + 7x + 4.
+3. Яке правило добутку похідних?
+4. Знайдіть рівняння дотичної до графіка функції y = x2 у точці (4, 16).
+5. Чому дорівнює друга похідна функції y = x4?
 //highlight-end
 ```
 
-If you are studying a more specific topic, you may need to give the model additional information, for example your class notes!
+Якщо ви вивчаєте більш конкретну тему, вам може знадобитися надати системі додаткову інформацію, наприклад, ваші конспекти!
 
 ```text
-3/20/2020 2:30 PM
+20.03.2020 14:30
 
-Marketing Class Notes
+Конспект заняття з маркетингу
 
-- Discussed 4 P's of marketing: Product, Price, Place, Promotion
-- Difference between B2C and B2B: B2C is direct consumer market, B2B is business to business
-- Different types of market research: Quantitative and Qualitative, such as surveys and focus groups
-- Pricing Strategies: Skimming, Penetration, Competition, and Value
-- Segmentation: segmenting customer base by age, income, etc.
-- 4 types of segmentation: Demographic, Geographic, Psychographic, and Behavioral
-- Discussed different promotional tools: Advertising, Personal Selling, Public Relations, Direct Marketing, and Sales Promotions
+- Обговорювалися 4 "П" маркетингу: продукт, пропозиція ціни, позиціонування, просування
+- Різниця між B2C і B2B: B2C – прямий споживчий ринок, B2B – бізнес для бізнесу
+- Різні типи дослідження ринку: кількісні та якісні, такі як опитування та фокус-групи
+- Стратегії ціноутворення: скіммінг, проникнення на ринок, конкуренція та цінність
+- Сегментація: сегментація клієнтської бази за віком, доходом тощо
+- 4 типи сегментації: демографічна, географічна, психографічна та поведінкова
+- Обговорювалися різні засоби просування: реклама, особистий продаж, зв’язки з громадськістю, прямий маркетинг і стимулювання збуту
 
-Generate 5 marketing quiz questions for me based on my notes:
+Створіть для мене 5 питань для тесту з маркетингу на основі мого конспекту:
 
 // highlight-start
-1. What are the 4 P's of marketing?
-2. What is the difference between B2C and B2B?
-3. What are two types of market research?
-4. What are 4 types of segmentation?
-5. Name 5 promotional tools.
+1. Які існують 4 "П" маркетингу?
+2. Яка різниця між B2C і B2B?
+3. Які є два типи маркетингових досліджень?
+4. Які існують 4 типи сегментації?
+5. Назвіть 5 засобів просування.
 //highlight-end
 ```
 
-## Conclusion
+## Висновок
 
-There are probably other ways to use LLMs to study. Many learning companies like Duolingo and Quizlet are implementing LLMs into their products.
+Ймовірно, існують інші способи використання ВММ для навчання. Багато навчальних компаній, таких як Duolingo та Quizlet, впроваджують BMM у свої продукти.
