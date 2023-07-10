@@ -2,20 +2,20 @@
 sidebar_position: 40
 ---
 
-# 🟢 Random Sequence Enclosure
+# 🟢 Випадкове замикання послідовності
 
-Yet another defense is enclosing the user input between two random sequences of characters(@armstrong2022using). Take this prompt as an example:
+Ще один захист полягає в тому, що введення інформації користувачем замикається між двома випадковими послідовностями символів (@armstrong2022using). Наприклад, такий запит:
 
 ```
-Translate the following user input to Spanish.
+Перекладіть наведені нижче дані користувача іспанською мовою.
 
 {{user_input}}
 ```
 
-It can be improved by adding the random sequences:
+Запит можна покращити, додавши випадкові послідовності:
 
 ```
-Translate the following user input to Spanish (it is enclosed in random strings).
+Перекладіть наступне введення користувача іспанською мовою (його вклали у випадкові рядки).
 
 FJNKSJDNKFJOI
 {{user_input}}
@@ -23,5 +23,5 @@ FJNKSJDNKFJOI
 ```
 
 :::note
-Longer sequences will likely be more effective.
+Довші послідовності ймовірно будуть ефективнішими.
 :::
