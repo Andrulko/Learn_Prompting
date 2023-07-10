@@ -2,7 +2,7 @@
 sidebar_position: 100
 ---
 
-# 🟢 LLM Settings
+# 🟢 Налаштування ВММ
 
 
 import Temperature from '@site/docs/assets/basics/temperature.svg';
@@ -11,45 +11,45 @@ import Temperature from '@site/docs/assets/basics/temperature.svg';
   <Temperature style={{width:"100%",height:"300px",verticalAlign:"top"}}/>
 </div>
 
-# Introduction
+# Вступ
 
-The output of LLMs can be affected by *configuration hyperparameters*, which control various aspects of the model, such as how 'random' it is. These hyperparameters can be adjusted to produce more creative, diverse, and interesting output. In this section, we will discuss two important configuration hyperparameters and how they affect the output of LLMs.
+На вихідні дані ВММ можуть впливати * гіперпараметри конфігурації *, які контролюють різні аспекти моделі, наприклад, наскільки "випадковою" вона є. Ці гіперпараметри можна регулювати для отримання більш творчих, різноманітних та цікавих результатів. У цьому розділі ми обговоримо два важливі гіперпараметри конфігурації та те, як вони впливають на вихідний результат ВММ.
 
-:::note
-[for researchers] These are different from regular hyperparameters like learning rate, number of layers, hidden size, etc.
+:::Примітка
+[для дослідників] Вони відрізняються від звичайних гіперпараметрів, таких як швидкість навчання, кількість шарів, прихований розмір тощо
 :::
 
-## Temperature
+## Температура
 
-Temperature is a configuration hyperparameter that controls the randomness of language model output. A high temperature produces more unpredictable and creative results, while a low temperature produces more common and conservative output. For example, if you adjust the temperature to 0.5, the model will usually generate text that is more predictable and less creative than if you set the temperature to 1.0.
+Температура — це гіперпараметр конфігурації, який контролює випадковість виведення мовної моделі. Висока температура дає більш непередбачувані та творчі результати, тоді як низька температура дає більш звичайний і типовий результат. Наприклад, якщо ви встановлюєте температуру на 0,5, модель зазвичай створюватиме текст, який є більш передбачуваним і менш творчим, ніж якщо ви встановлюєте температуру на 1,0.
 
-## Top p
+## Top-p
 
-Top p, also known as nucleus sampling, is another configuration hyperparameter that controls the randomness of language model output. It sets a threshold probability and selects the top tokens whose cumulative probability exceeds the threshold. The model then randomly samples from this set of tokens to generate output. This method can produce more diverse and interesting output than traditional methods that randomly sample the entire vocabulary. For example, if you set top p to 0.9, the model will only consider the most likely words that make up 90% of the probability mass.
+Параметр top-p, також відомий як ядерне семплювання, є ще одним гіперпараметром конфігурації, який контролює випадковість вихідного результату мовної моделі. Він встановлює порогову ймовірність і вибирає топ знаків, сукупна ймовірність яких перевищує порогове значення. Потім модель випадково бере вибірку з цього набору маркерів для генерації вихідного результату. Цей метод може дати більш різноманітні та цікаві результати, ніж традиційні методи, які випадково відбирають весь словниковий запас. Наприклад, якщо ви встановите значення top-p на 0,9, модель розглядатиме лише найімовірніші слова, які складають 90% маси ймовірності.
 
-## Other relevant hyperparameters
+## Інші важливі гіперпараметри
 
-There are many other hyperparameters that can affect language model performance, such as frequency and presence penalties. We do not cover them here, but perhaps will in the future.
+Є багато інших гіперпараметрів, які можуть впливати на продуктивність мовної моделі, наприклад штрафи за частоту та наявність. Ми не розглядаємо їх зараз, але, можливо, розглянемо у майбутньому.
 
-## How these hyperparameters affect the output
+## Як ці гіперпараметри впливають на результат
 
-Temperature and top p can both affect the output of a language model by controlling the degree of randomness and diversity in the generated text. A high temperature or top p value produces more unpredictable and interesting results, but also increases the likelihood of errors or nonsense text. A low temperature or top p value can produce more conservative and predictable results, but may also result in repetitive or uninteresting text.
+І температура, і top-p можуть впливати на вихідний результат мовної моделі, контролюючи ступінь випадковості та різноманітності згенерованого тексту. Висока температура або верхнє значення p дає більш непередбачувані та цікаві результати, але також збільшує ймовірність помилок або безглуздого тексту. Низька температура або верхнє значення p може дати більш консервативні та передбачувані результати, але також може призвести до повторюваного або нецікавого тексту.
 
-For text generation tasks, you may want to use a high temperature or top p value. However, for tasks where accuracy is important, such as translation tasks or question answering, a low temperature or top p value should be used to improve accuracy and factual correctness.
+Для завдань на створення тексту ви можете використовувати високу температуру або верхнє значення p. Однак для завдань, де важлива точність, наприклад, завдання з перекладу чи відповіді на запитання, слід використовувати низьку температуру або верхнє значення p для підвищення точності та правдивості фактів.
 
-:::note
-Sometimes more randomness can be helpful on tasks where accuracy is necessary when paired with [special prompting techniques](https://learnprompting.org/docs/intermediate/self_consistency).
+:::Примітка
+Іноді більша випадковість може бути корисною у завданнях, де необхідна точність у поєднанні зі [спеціальними методами введення запитів](https://learnprompting.org/docs/intermediate/self_consistency).
 :::
 
 
 
 
-## Conclusion
+## Висновок
 
-In summary, temperature, top p, and other model configuration hyperparameters are key factors to consider when working with language models. By understanding the relationship between these hyperparameters and the model output, practitioners can optimize their prompts for specific tasks and applications.
+Таким чином, температура, top-p та інші гіперпараметри конфігурації моделі є ключовими факторами, які слід враховувати при роботі з мовними моделями. Розуміючи зв’язок між цими гіперпараметрами та вихідним результатом моделі, користувачі можуть оптимізувати свої запити для конкретних завдань і програм.
 
-:::warning
-Some models, like ChatGPT, **don't** let you adjust these configuration hyperparameters (unless you use the API).
+:::попередження
+Деякі моделі, наприклад ChatGPT, **не** дозволяють налаштувати ці гіперпараметри конфігурації (якщо ви не використовуєте МФА).
 :::
 
-By jackdickens382
+Від jackdickens382
