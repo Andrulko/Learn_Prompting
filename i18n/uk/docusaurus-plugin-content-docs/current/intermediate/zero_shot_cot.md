@@ -2,10 +2,10 @@
 sidebar_position: 4
 ---
 
-# 🟢 Zero Shot Chain of Thought
+# 🟢 Ланцюг думок без ілюстрацій
 
 
-Zero Shot Chain of Thought (Zero-shot-CoT) prompting (@kojima2022large) is a follow up to %%CoT prompting|CoT prompting%% (@wei2022chain), which introduces an incredibly simple zero shot prompt. They find that by appending the words "**Let's think step by step.**" to the end of a question, LLMs are able to generate a chain of thought that answers the question. From this chain of thought, they are able to extract more accurate answers.
+Запит ланцюг думок без ілюстрацій (Zero-shot-CoT)(@kojima2022large) є доповненням до %%CoT|CoT prompting%% (@wei2022chain), який представляє неймовірно простий запит на основі 1 ілюстрації. Таким чином, додаючи слова "**Думаймо крок за кроком.**" до кінця запитання, ВММ можуть створити ланцюг думок, який відповідає на запитання. З цього ланцюга думок вони можуть отримати точніші відповіді.
 
 import ZSImage from '@site/docs/assets/intermediate/zero_shot.png';
 
@@ -14,10 +14,10 @@ import ZSImage from '@site/docs/assets/intermediate/zero_shot.png';
 </div>
 
 <div style={{textAlign: 'center'}}>
-Zero Shot CoT (Kojima et al.)
+Ланцюг думок без ілюстрацій (Коджіма та ін.)
 </div>
 
-Technically, the full Zero-shot-CoT process involves two separate prompts/completions. In the below image, the top bubble on the left generates a chain of thought, while the top bubble on the right takes in the output from the first prompt (including the first prompt itself), and extracts the answer from the chain of thought. This second prompt is a _self augmented_ prompt.
+Технічно, повний процес Zero-shot-CoT включає два окремі запити/завершення. На зображенні нижче верхня бульбашка зліва створює ланцюг думок, а верхня бульбашка справа бере вихідні дані з першого запиту (включно з найпершим запитом) та вилучає відповідь із ланцюга думок. Цей другий запит є _самодоповненим_.
 
 import ZSProcessImage from '@site/docs/assets/intermediate/zero_shot_example.png';
 
@@ -26,38 +26,38 @@ import ZSProcessImage from '@site/docs/assets/intermediate/zero_shot_example.png
 </div>
 
 <div style={{textAlign: 'center'}}>
-Full Zero Shot CoT Process (Kojima et al.)
+Процес ланцюга думок без ілюстрацій (Коджіма та ін.)
 </div>
 
-## Example
+## Наприклад
 
-Here are a few demos (which only perform reasoning extraction). This first demo shows GPT-3 (davinci-003) failing a simple math question, while the second demo uses a Zero-shot-CoT prompt and successfully solves the problem. Feel free to enter your OpenAI API key (Click Generate) and play around with the examples. Note how much simpler the Zero-shot-CoT prompt is compared to the CoT prompt.
+Ось кілька демонстрацій (у яких лише виконується вилучення міркувань). Перша демонстрація показує, що GPT-3 (davinci-003) не може впоратися з простим математичним питанням, в той час, як друга демонстрація використовує запит Zero-shot-CoT та успішно розв'язує задачу. Ви можете ввести свій ключ OpenAI API (натиснути «Створити») і погратися з прикладами. Зверніть увагу, наскільки простішим є запит Zero-shot-CoT у порівнянні з запитом CoT.
 
-#### Incorrect <iframe
+#### Неправильно <iframe
     src="https://embed.learnprompting.org/embed?config=eyJ0b3BQIjoxLCJ0ZW1wZXJhdHVyZSI6MC43LCJtYXhUb2tlbnMiOjI1Niwib3V0cHV0IjoiSm9obiBoYXMgOCBwZWFycy4iLCJwcm9tcHQiOiJJZiBKb2huIGhhcyA1IHBlYXJzLCB0aGVuIGVhdHMgMiwgYW5kIGJ1eXMgNSBtb3JlLCB0aGVuIGdpdmVzIDMgdG8gaGlzIGZyaWVuZCwgaG93IG1hbnkgcGVhcnMgZG9lcyBoZSBoYXZlPyIsIm1vZGVsIjoidGV4dC1kYXZpbmNpLTAwMyJ9"
     style={{width:"100%", height:"500px", border:"0", borderRadius:"4px", overflow:"hidden"}}
     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
 ></iframe>
 
 
-#### Correct <iframe
+#### Правильно <iframe
     src="https://embed.learnprompting.org/embed?config=eyJ0b3BQIjoxLCJ0ZW1wZXJhdHVyZSI6MC43LCJtYXhUb2tlbnMiOjI1Niwib3V0cHV0IjoiSm9obiBzdGFydHMgd2l0aCA1IHBlYXJzLiBIZSBlYXRzIDIgcGVhcnMsIGxlYXZpbmcgaGltIHdpdGggMyBwZWFycy4gSGUgYnV5cyA1IG1vcmUgcGVhcnMsIGdpdmluZyBoaW0gYSB0b3RhbCBvZiA4IHBlYXJzLiBIZSBnaXZlcyAzIHBlYXJzIHRvIGhpcyBmcmllbmQsIGxlYXZpbmcgaGltIHdpdGggb25seSA1IHBlYXJzLiIsInByb21wdCI6IklmIEpvaG4gaGFzIDUgcGVhcnMsIHRoZW4gZWF0cyAyLCBhbmQgYnV5cyA1IG1vcmUsIHRoZW4gZ2l2ZXMgMyB0byBoaXMgZnJpZW5kLCBob3cgbWFueSBwZWFycyBkb2VzIGhlIGhhdmU%2FXG5cbkxldCdzIHRoaW5rIHN0ZXAgYnkgc3RlcC4iLCJtb2RlbCI6InRleHQtZGF2aW5jaS0wMDMifQ%3D%3D"
     style={{width:"100%", height:"500px", border:"0", borderRadius:"4px", overflow:"hidden"}}
     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
 ></iframe>
 
-## Results
-Zero-shot-CoT was also effective in improving results on arithmetic, commonsense, and symbolic reasoning tasks. However, unsurprisingly, it was usually not as effective as CoT prompting. An important use case for Zero-shot-CoT is when obtaining few shot examples for CoT prompting is difficult.
+## Результати
+Zero-shot-CoT також був ефективним у покращенні результатів арифметичних задач, задач на логіку й символьне міркування. Однак, як не дивно, він зазвичай не був настільки ж ефективним, як запит CoT. Використання Zero-shot-CoT може бути доцільним тоді, коли важко отримати кілька зразків на основі кількох ілюстрацій для запиту CoT.
 
-## Ablations of Interest
+## Абляції вигоди
 
-Kojima et al. experiment with a number of different Zero-shot-CoT prompts (e.g. "Let’s solve this problem by splitting it into steps." or "Let’s think about this logically."), but they find that "Let's think step by step" is most effective for their chosen tasks.
+Коджіма та ін. експериментують з кількома різними запитами Zero-shot-CoT (наприклад, «Розв'яжімо цю задачу, розділивши її на кроки» або «Подумаймо про це логічно»), але вони вважають, що «Думаймо крок за кроком» є найефективнішим для вибраних ними завдань.
 
 
 
-## Notes
+## Примітки
 
-The extraction step often must be task specific, making Zero-Shot-CoT less generalizable than it appears at first.
+Етап вилучення часто має залежати від завдання, що робить Zero-Shot-CoT менш узагальненим, ніж здається на перший погляд.
 
-Anecdotally, I've found that Zero-shot-CoT style prompts are sometimes effective in improving the length of completions for generative tasks. For example, consider the standard prompt `Write a story about a frog and a mushroom who become friends.` Appending the words `Let's think step by step.` to the end of this prompt leads to a much longer completion.
+До речі, я виявив, що запити в стилі Zero-shot-CoT іноді ефективні для покращення тривалості виконання генеративних завдань. Наприклад, розглянемо стандартний запит `Напишіть історію про жабу та гриб, які стали друзями.` Додавання слів `Давайте думати крок за кроком.` до кінця цього запиту призводить до набагато довшого завершення.
 
