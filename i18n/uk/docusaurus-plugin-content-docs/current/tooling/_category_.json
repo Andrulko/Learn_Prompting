@@ -1,8 +1,8 @@
 {
-  "label": "🔨 Tooling",
+  "label": "ІСР інженерії запитів",
   "position": 60,
   "link": {
-    "type": "generated-index",
-    "description": "Prompt Engineering IDEs."
+    "type": "параметр генерації",
+    "description": "ІСР інженерії запитів"
   }
 }
