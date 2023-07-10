@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# 🟢 Role Prompting
+# 🟢 Рольовий запит
 
 import RolePrompt from '@site/docs/assets/basics/role_prompt.svg';
 
@@ -10,42 +10,42 @@ import RolePrompt from '@site/docs/assets/basics/role_prompt.svg';
   <RolePrompt style={{width:"100%",height:"300px",verticalAlign:"top"}}/>
 </div>
 
-Another prompting technique is to assign a role to the AI. For example, your prompt could start off with "You are a doctor" or "You are a lawyer" and then ask the AI to answer some medical or legal question. Here is an example:
+Інша техніка запитів полягає у призначенні ролі ШІ. Наприклад, запит може починатися з "Ви лікар" або "Ви юрист", а потім попросіть ШІ відповісти на якесь медичне чи юридичне запитання. Ось приклад:
 
 ```text
-You are a brilliant mathematician who can solve any problem in the world.
-Attempt to solve the following problem:
+Ти геніальний математик, який може розв'язати будь-яку задачу у світі.
+Спробуй розв’язати таку задачу:
 
-What is 100*100/400*56?
+Чому дорівнює 100*100/400*56?
 
 // highlight-start
-The answer is 1400.
+Відповідь: 1400.
 // highlight-end
 ```
 
-The AI's (GPT-3 davinci-003) answer is highlighted in green:
+Відповідь ШІ (GPT-3 davinci-003) виділено зеленим кольором:
 
 
-This is a correct answer, but if the AI had simply been prompted with `What is 100*100/400*56?`, it would have answered `280` (incorrect). Please note that *ChatGPT* will answer the question incorrectly, but in a different way.
+Це правильна відповідь, але якби штучному інтелекту просто дали запит `Чому дорівнює 100*100/400*56?`, він дав би відповідь `280` (невірно). Зауважте, що *ChatGPT* відповість на запитання неправильно, але іншим способом.
 
-When assigning a role to the AI, we are giving it some context. This context helps the AI understand the question better. With better understanding of the question, the AI often gives better answers.
+Призначаючи роль ШІ, ми надаємо йому певний контекст. Цей контекст допомагає ШІ краще зрозуміти запитання. З кращим розумінням запитання ШІ часто дає кращі відповіді.
 
 :::note
-This technique is no longer as effective with more modern AIs (e.g. GPT-3 davinci-003). However, we did use GPT-3 davinci-003 for this example, so it seems that role prompting is still at least a somewhat effective tool to interact with AIs.
+Ця техніка вже не така ефективна з сучаснішими ШІ (наприклад, GPT-3 davinci-003). Однак ми використали GPT-3 davinci-003 для цього прикладу, тож, здається, рольовий запит все ще є принаймні певною мірою ефективним інструментом для взаємодії з ШІ.
 :::
 
-## Examples
+## Приклади
 
-You can find some more interesting prompts in the [Awesome ChatGPT Prompts](https://github.com/f/awesome-chatgpt-prompts#prompts) repository on GitHub. These were built for *ChatGPT*, but they likely work with other AIs, and you can also use them as inspiration to build your own prompts. Let's see two examples:
+Ви можете знайти ще кілька цікавих запитів у репозиторії [Чудові підказки ChatGPT](https://github.com/f/awesome-chatgpt-prompts#prompts) на GitHub. Вони були створені для *ChatGPT*, але вони, ймовірно, працюють з іншими ШІ, і ви також можете використовувати їх як натхнення для створення власних запитів. Розгляньмо два приклади:
 
-> ### Act as an Etymologist
+> ### Дій як етимолог
 > 
-> I want you to act as an etymologist. I will give you a word and you will research the origin of that word, tracing it back to its ancient roots. You should also provide information on how the meaning of the word has changed over time, if applicable. My first request is "I want to trace the origins of the word 'pizza'".
+> Я хочу, щоб ти виступив у ролі етимолога. Я дам тобі слово, і ти дослідиш походження цього слова, простеживши його до давніх коренів. Ти також повинен надати інформацію про те, як значення слова змінилося з часом, , якщо це можливо. Мій перший запит: «Я хочу простежити походження слова «піца»».
 
-> ### Act as an Absurdist
+> ### Дій як абсурдист
 > 
-> I want you to act as an absurdist. The absurdist's sentences are meaningless. The words used by an absurdist are completely ridiculous. The absurdist does not make commonplace sentences in any way. My first suggestion request is "I need help creating absurdist sentences for my new series called Hot Skull, so write 10 sentences for me".
+> Я хочу, щоб ти поводився як абсурдист. Речення абсурдиста безглузді. Слова, вжиті абсурдистом, абсолютно смішні. Абсурдист жодним чином не складає банальні речення. Мій перший запит: «Мені потрібна допомога у створенні абсурдистських речень для мого нового серіалу під назвою «Hot Skull», тому напиши для мене 10 речень».
 
 ---
 
-🚧 This page needs citations.
+🚧 Ця сторінка потребує цитування.
