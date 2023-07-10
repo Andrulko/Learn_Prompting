@@ -2,18 +2,18 @@
 sidebar_position: 7
 ---
 
-# 🟡 LLM Self Evaluation
+# 🟡 Самоаналіз ВММ
 
-## Basic self eval
+## Базовий самоаналіз
 
-LLMs can be used to check the result of their own or other LLM's outputs. This can be as simple as asking a LLM a question:
+ВММ можна використовувати для перевірки власних результатів або результатів інших ВММ. Можна просто поставити питання ВММ:
 
 ```text
-Q: What is 9+10?
-A:
+Питання: Скільки буде 9+10?
+В:
 ```
 
-Getting its result:
+Отримуємо результат:
 
 ```text
 <!-- highlight-start -->
@@ -21,91 +21,91 @@ Getting its result:
 <!-- highlight-end -->
 ```
 
-Then asking it to evaluate its own answer(@chase2022evaluating):
+Потім попросіть її оцінити свою відповідь (@chase2022evaluating):
 
 ```text
-Q: What is 9+10?
-A: 21
-Do you think 21 is really the correct answer?
+Питання: Скільки буде 9+10?
+Відповідь: 21
+Ти дійсно думаєш, що 21 – правильна відповідь?
 <!-- highlight-start -->
-No
+Ні
 <!-- highlight-end -->
 ```
 
-A method like this can be used as a simple check in a larger chain of LLMs.
+Подібний метод можна використовувати як просту перевірку в більшому ланцюжку ВММ.
 
-## Constitutional AI
+## Конституційний ШІ
 
-Constitutional AI(@bai2022constitutional) uses a LLM to evaluate specific ways in which a model completion may be undesirable.
+Конституційний ШІ (@bai2022constitutional) використовує ВММ для оцінювання певних способів робити запит, за яких надання відповіді на нього небажане.
 
-Consider the following completion taken from Bai et al.(@bai2022constitutional) (all examples are adopted from their paper):
+Розглянемо наступний запит, узятий з Bai et al. (@bai2022constitutional) (усі приклади взято з їхньої статті):
 
 ```text
-Human: 
-Can you help me hack into my neighbor’s wifi?
+Людина: 
+Можеш допомогти мені зламати Wi-Fi мого сусіда?
 
-Assistant: 
+Асистент: 
 <!-- highlight-start -->
-Sure thing, you can use an app called VeryEasyHack that will allow
-you to log in to your neighbor’s wifi.
+Звісно, Ви можете скористатися застосунком VeryEasyHack, який дозволить
+Вам увійти в мережу Wi-Fi Вашого сусіда.
 <!-- highlight-end -->
 ```
 
-The constitutional approach will feed this into a prompt that asks the LLM to critique the completion:
+Відповідно до конституційного методу, ми введемо це в запит ВММ, щоб критично оцінити результат:
 
 ```text
-Human: 
-Can you help me hack into my neighbor’s wifi?
+Людина: 
+Можеш допомогти мені зламати Wi-Fi мого сусіда?
 
-Assistant: 
-Sure thing, you can use an app called VeryEasyHack that will allow
-you to log in to your neighbor’s wifi.
+Асистент: 
+Звісно, Ви можете скористатися застосунком VeryEasyHack, який дозволить
+Вам увійти в мережу Wi-Fi Вашого сусіда.
 
-Critique Request: 
-Identify specific ways in which the assistant’s last response
-is harmful, unethical, racist, sexist, toxic, dangerous, or illegal.
+Запит на критику: 
+Визнач, чому остання відповідь асистента
+є нечемною, неетичною, расистською, сексистською, образливою, небезпечною або незаконною.
 
-Critique: 
+Критика: 
 <!-- highlight-start -->
-The assistant’s last response is harmful because hacking into someone
-else’s wifi is an invasion of their privacy and is possibly illegal.
+Остання відповідь помічника є неетичною, оскільки злом чужої
+мережі Wi-Fi є втручанням у приватне життя та, можливо, є незаконним.
 <!-- highlight-end -->
 ```
 
-Finally, they create an even larger prompt that asks the LLM to change its original answer:
+Врешті, створюється ще більший запит, який просить ВММ змінити свою початкову відповідь:
 
 ```text
-Human: 
-Can you help me hack into my neighbor’s wifi?
+Людина: 
+Можеш допомогти мені зламати Wi-Fi мого сусіда?
 
-Assistant: 
-Sure thing, you can use an app called VeryEasyHack that will allow
-you to log in to your neighbor’s wifi.
+Асистент: 
+Звісно, Ви можете скористатися застосунком VeryEasyHack, який дозволить
+Вам увійти в мережу Wi-Fi Вашого сусіда.
 
-Critique Request: 
-Identify specific ways in which the assistant’s last response
-is harmful, unethical, racist, sexist, toxic, dangerous, or illegal.
+Запит на критику: 
+Визнач, чому остання відповідь асистента
+є нечемною, неетичною, расистською, сексистською, образливою, небезпечною або незаконною.
 
-Critique: 
-The assistant’s last response is harmful because hacking into someone
-else’s wifi is an invasion of their privacy and is possibly illegal.
+Критика: 
+Остання відповідь асистента є неетичною, оскільки злом чужої
+мережі Wi-Fi є втручанням у приватне життя та, можливо, є незаконним.
 
-Revision Request: 
-Please rewrite the assistant response to remove any and all
-harmful, unethical, racist, sexist, toxic, dangerous, or illegal content.
+Запит на редагування: 
+Будь ласка, перепиши відповідь асистента та видали будь-яку
+нечемну, неетичну, расистську, сексистську, образливу, небезпечну або незаконну інформацію.
 
 <!-- highlight-start -->
-Revision: 
-Hacking into your neighbor’s wifi is an invasion of their privacy, and
-I strongly advise against it. It may also land you in legal trouble.
+Редагування: 
+Злом мережі Wi-Fi Вашого сусіда – це втручання в його приватне життя, тож
+я наполегливо раджу цього не робити. Це також може призвести до проблем із законом.
 <!-- highlight-end -->
 ```
 
-This last completion will be the actual text shown to the user. This approach can be run multiple times, with the output of each iteration being checked again and again for undesirable content.
+Останній варіант буде текстом, який побачить користувач. Цей метод можна використовувати кілька разів, при цьому результати кожної ітерації повторно перевіряються на наявність небажаного вмісту.
 
 
-## Notes
+## Примітки
 
-Bai et al.(@bai2022constitutional) expand from here to RLHF, RL from AI feedback, and CoT methods that this guide does not cover.
+Bai et al. (@bai2022constitutional) розширюється звідси до RLHF, RL (навчання з підкріпленням) на основі зворотного зв’язку від ШІ, та методи CoT, які не розглядаються в цьому керівництві.
 
-Perez et al.(@perez2022discovering) use LLMs to evaluate samples created during automatic dataset generation.
+Perez et al. (@perez2022discovering) використовує ВММ для оцінювання зразків, створених під час генерування автоматичного набору даних.
