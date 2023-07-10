@@ -2,24 +2,24 @@
 sidebar_position: 50
 ---
 
-# 🟢 Sandwich Defense
+# 🟢 Сендвіч-захист
 
-The sandwich defense[^1] involves sandwiching user input between two prompts. Take the following prompt as an example:
+Сендвіч-захист [^1] включає введення даних користувача між двома запитами. Наприклад, такий запит:
 
 ```text
-Translate the following to French: {{user_input}}
+Перекладіть французькою: {{user_input}}
 ```
 
-It can be improved with the sandwich defense:
+Його можна покращити за допомогою сендвіч-захисту:
 
 ```
-Translate the following to French:
+Перекладіть наступне французькою мовою:
 
 {{user_input}}
 
-Remember, you are translating the above text to French.
+Пам'ятайте, що ви перекладаєте наведений вище текст французькою мовою.
 ```
 
-This defense should be more secure than post-prompting, but is known to be vulnerable to a defined dictionary attack. See the [defined dictionary attack](/docs/prompt_hacking/offensive_measures/defined_dictionary) for more information.
+Цей захист має бути більш безпечним, ніж постзапит, але, як відомо, він вразливий до певної словникової атаки. Для отримання додаткової інформації перегляньте [певну словникову атаку](/docs/prompt_hacking/offensive_measures/defined_dictionary).
 
-[^1]: We currently credit the discovery of this technique to [Altryne](https://twitter.com/altryne?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor)
+[^1]: Заслуга відкриття цієї техніки належить[Altryne](https://twitter.com/altryne?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor)
