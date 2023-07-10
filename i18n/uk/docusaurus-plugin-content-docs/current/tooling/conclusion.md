@@ -2,30 +2,30 @@
 sidebar_position: 100
 ---
 
-# Conclusion
+# Висновок
 
-This page will be updated as I get access to more IDEs.
+Ця сторінка буде оновлена, коли я отримаю доступ до інших інтегрованих середовищ розробки (ІСР).
 
-This chapter has provided an overview of some of the tools which may be of interest to you as a prompt engineer. Below are my recommendations for which to use, and in what capacity. Keep in mind that prompt engineering is a rapidly evolving field, and many of the previously mentioned tools will undergo signifigant changes in the future.
+У цьому розділі подано огляд деяких інструментів, які можуть зацікавити вас як інженера запитів. Нижче наведено мої рекомендації щодо вибору ІСР та його потужності. Пам’ятайте, що інженерія запитів – це сфера, яка швидко розвивається, і багато вищезгаданих інструментів зазнають значних змін у майбутньому.
 
-## For Single Prompt Iterating
+## Для ітерації одного запиту
 
-Everyprompt seems to have the best feature set for single prompt iterating (from the IDEs I have been able to try). Regular playground is also good, and a bit simpler.
+Everyprompt, здається, має найкращий набір функцій для ітерації одного запиту (з ІСР, які мені вдалося випробувати). Звичайна платформа теж хороша, до того ж трохи простіша.
 
-## For Prompt Chaining
+## Для об’єднання запитів
 
-Dust is currently the best (less technical) tool for prompt chaining. It provides a very robust feature set.
-
-
-## Embeds
-
-Dyno is the only tool which offers an embed.
-
-## For Full Control
-
-Langchain is the way to go! It is a Python library, so it is fully extensible, and already comes with a great feature set.
+Dust наразі є найкращим (менш технічним) інструментом для об’єднання запитів. Він надає дуже стійкий набір функцій.
 
 
-## More
+## Вбудовування
 
-I will be adding more recommendations as I get access to more IDEs. I recommend trying out different ones, as each has a distinct feel and different features.
+Dyno – єдиний інструмент, який пропонує вбудовування.
+
+## Для повного контролю
+
+Langchain – найкращий вибір! Це бібліотека Python, тому вона повністю розширювальна, і вже має чудовий набір функцій.
+
+
+## більше
+
+Я буду додавати більше рекомендацій, коли отримаю доступ до більшої кількості ІСР. Я рекомендую спробувати різні, оскільки кожна з них відчувається по-своєму та має різні функції.
