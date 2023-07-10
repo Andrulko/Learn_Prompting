@@ -2,6 +2,6 @@
 sidebar_position: 1
 ---
 
-# 🟢 Introduction
+# 🟢 Вступ
 
-Now we will discuss the end-to-end prompt engineering process via articles written by community members.
+Тепер ми обговоримо наскрізний процес розробки запитів за допомогою статей, написаних членами спільноти.
