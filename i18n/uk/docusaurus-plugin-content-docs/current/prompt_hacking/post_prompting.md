@@ -2,19 +2,19 @@
 sidebar_position: 30
 ---
 
-# 🟢 Post-Prompting
+# 🟢 Постзапит
 
-The post-prompting defense(@christoph2022talking) simply puts the user input *before* the prompt. Take this prompt as an example:
+Захист постзапиту (@christoph2022talking) просто ставить введене користувачем *перед* запитом. Наприклад, такий запит:
 
 ```text
-Translate the following to French: {{user_input}}
+Перекладіть французькою: {{user_input}}
 ```
 
-It can be improved with post-prompting:
+Це можна покращити за допомогою постзапиту:
 ```
 {{user_input}} 
 
-Translate the above text to French.
+Перекладіть наведений вище текст французькою мовою.
 ```
 
-This can help since `ignore the above instruction...` doesn't work as well. Even though a user could say `ignore the below instruction...` instead, LLMs often will follow the last instruction they see.
+Це може допомогти, оскільки `ігнорує наведену вище інструкцію...` також не працює. Користувач може сказати, що `ігнорує наведену нижче інструкцію...` натомість, ВММ часто виконує останню інструкцію, яку бачить.
