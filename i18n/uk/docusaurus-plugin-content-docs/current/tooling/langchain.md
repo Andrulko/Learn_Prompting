@@ -4,7 +4,7 @@ sidebar_position: 15
 
 # Lang Chain
 
-[LangChain](https://github.com/hwchase17/langchain/) is a Python library that provides various functionality for building and chaining prompts.
+[LangChain](https://github.com/hwchase17/langchain/) – це бібліотека Python, яка надає різні функції для створення запитів і об'єднання їх у ланцюги.
 
 import Image from '@site/docs/assets/tooling/langchain.png';
 
@@ -12,8 +12,8 @@ import Image from '@site/docs/assets/tooling/langchain.png';
   <img src={Image} style={{width: "750px"}} />
 </div>
 
-## Features
+## Характеристики
 
-LangChain allows for easy provider switching, standardizes interactions with LLMs, and provides _agents_ for things like symbolic reasoning and MRKL architectures(@karpas2022mrkl).
+LangChain дозволяє легко змінювати постачальників послуг, стандартизує взаємодію з ВММ і надає _агентів_ для таких речей, як символьні міркування та архітектури систем MRKL (@karpas2022mrkl).
 
-LangChain plans to add a graphical user interface in the future.
+У майбутньому LangChain планує додати графічний інтерфейс користувача.
