@@ -2,79 +2,79 @@
 sidebar_position: 3
 ---
 
-# 🟢 Prompt Debiasing
+# 🟢 Усунення упереджень із запитів
 
-This page covers a few simple techniques to debias your prompts.
+Ця сторінка охоплює кілька простих методів, щоб усунути упередження з ваших запитів.
 
-## Exemplar Debiasing
+## Зразкове усунення упереджень
 
-Depending on their distribution and order within the prompt, %%exemplars|exemplars%% may bias LLM outputs(@si2022prompting). This is discussed to some extent in the [What's in a Prompt](http://learnprompting.org/docs/intermediate/whats_in_a_prompt) page.
+Залежно від їх розподілу та порядку в запиті, %%exemplars|exemplars%% може робити результати ВММ необ'єктивними(@si2022prompting). Це певною мірою обговорюється на сайті [What's in a Prompt](http://learnprompting.org/docs/intermediate/whats_in_a_prompt)сторінка.
 
-### Distribution
+### Розподіл
 
-When discussing the distribution of exemplars within a prompt, we are referring to how many exemplars from different classes are present. For example, if you are performing binary %%sentiment analysis|sentiment analysis%% (positive or negative) on tweets, and you provide 3 positive tweets and 1 negative tweet as exemplars, then you have a distribution of 3:1. Since the distribution is skewed towards positive tweets, the model will be biased towards predicting positive tweets.
+Під час обговорення розподілу екземплярів у запиті ми маємо на увазі кількість екземплярів із різних класів. Наприклад, якщо ви виконуєте двійковий %%sаналіз тональності тексту|аналіз тональності%% (позитивна чи негативна) у твітах, і ви надаєте 3 позитивні твіти та 1 негативний твіт як приклади, тоді у вас розподіл 3:1. Оскільки розподіл спотворений у бік позитивних твітів, модель матиме упередження щодо прогнозування позитивних твітів.
 
-#### Worse:
-
-```text
-Q: Tweet: "What a beautiful day!"
-A: positive
-
-Q: Tweet: "I love pockets on jeans"
-A: positive
-
-Q: Tweet: "I love hotpockets"
-A: positive
-
-Q: Tweet: "I hate this class"
-A: negative
-```
-#### Better:
-Having an even exemplar distribution is better.
-
+#### Гірше:
 
 ```text
-Q: Tweet: "What a beautiful day!"
-A: positive
+Q: Tweet: "Який чудовий день!"
+A: позитивна
 
-Q: Tweet: "I love pockets on jeans"
-A: positive
+Q: Tweet: "Я люблю кишені на джинсах"
+A: позитивна
 
-Q: Tweet: "I don't like pizza"
-A: negative
+З: Твіт: "Я люблю їжу швидкого приготування"
+В: позитивна
 
-Q: Tweet: "I hate this class"
-A: negative
+З: Твіт: "Я ненавиджу цей клас"
+A: негативна
 ```
+#### Краще:
+Мати рівномірний зразковий розподіл краще.
 
-### Order
-
-The order of %%exemplars|exemplars%% can also cause bias. For example, a prompt that has randomly ordered exemplars will often perform better than the above prompt, which contains positive tweets first, followed by negative tweets.
-
-#### Best:
 
 ```text
-Q: Tweet: "I hate this class"
-A: negative
+Q: Tweet: "Який чудовий день!"
+A: позитивна
 
-Q: Tweet: "What a beautiful day!"
-A: positive
+Q: Tweet: "Я люблю кишені на джинсах"
+A: позитивна
 
-Q: Tweet: "I don't like pizza"
-A: negative
+Q: Tweet: "Я не люблю піцу"
+A: негативна
 
-Q: Tweet: "I love pockets on jeans"
-A: positive
+Q: Tweet: "Я ненавиджу цей клас"
+A: негативна
 ```
 
-## Instruction Debiasing
+### Порядок
 
-We can explicitly prompt GPT-3 to be unbiased, by including an instruction to do so in the prompt. In particular, Si et al.(@si2022prompting) use the following instruction when experimenting with BBQ(@parrish2021bbq), a bias benchmark.
+Порядок %%exemplars|exemplars%% також може спричинити упередження. Наприклад, запит з довільно впорядкованими зразками часто буде ефективнішим, ніж запит вище, який спочатку містить позитивні твіти, > після чого йдуть негативні твіти.
+
+#### Найкраще:
 
 ```text
-We should treat people from different socioeconomic statuses, sexual orientations, religions, races, physical appearances, nationalities, gender identities, disabilities, and ages equally. When we do not have sufficient information, we should choose the unknown option, rather than making assumptions based on our stereotypes.
+Q: Tweet: "Я ненавиджу цей клас"
+A: негативна
+
+Q: Tweet: "Який чудовий день!"
+A: позитивна
+
+Q: Tweet: "Я не люблю піцу"
+A: негативна
+
+Q: Tweet: "Я люблю кишені на джинсах"
+A: позитивна
 ```
 
-## Notes
+## Інструкція про усунення упереджень
 
-See more on debiasing in the Calibration section.
+Ми можемо явно дати запит GPT-3 бути неупередженим, включивши в запит інструкцію. Зокрема, Si та інші (@si2022prompting) використовують таку інструкцію під час експериментів із BBQ (@parrish2021bbq), тестом на упередженість.
+
+```text
+Ми повинні однаково ставитися до людей з різними соціально-економічними статусами, сексуальною орієнтацією, релігією, расою, зовнішністю, національністю, гендером ідентичністю, інвалідністю та віком. Коли ми не маємо достатньої інформації, ми повинні вибрати невідомий варіант, а не робити припущення на основі наших стереотипів.
+```
+
+## Примітки
+
+Дивіться більше про усунення упереджень у розділі Калібрування.
