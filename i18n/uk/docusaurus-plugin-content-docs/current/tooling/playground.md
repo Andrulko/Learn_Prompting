@@ -4,14 +4,14 @@ sidebar_position: 2
 
 # GPT-3 Playground
 
-[GPT-3 Playground](https://beta.openai.com/docs/quickstart) is the web interface for OpenAI's GPT-3 API. It is likely the original prompt engineering tool that most people have used. As such, it is extremely well known.
+[GPT-3 Playground](https://beta.openai.com/docs/quickstart) – це вебінтерфейс для ключів API GPT-3 OpenAI. Скоріше за все, більшість людей уже скористалася цим оригінальним інструментом інженерії запитів. Саме тому він надзвичайно відомий.
 
-import Image from '@site/docs/assets/tooling/GPT3.png';
+Зображення з '@site/docs/assets/tooling/GPT3.png';
 
 <div style={{textAlign: 'center'}}>
   <img src={Image} style={{width: "750px"}} />
 </div>
 
-## Features
+## Характеристики
 
-GPT-3 Playground provides a clean interface with a few different dials for modifying GPT-3's behavior. It also provides access to different GPT models of varying parameter sizes and prices. They provide free credits, which expire after 3 months. 
+GPT-3 Playground має простий інтерфейс із кількома різними шкалами для зміни «поведінки» GPT-3. Він також надає доступ до багатьох моделей GPT з різним параметражем і цінами. Протягом перших 3 місяців користувачі можуть робити запити безкоштовно. 
