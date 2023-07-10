@@ -4,7 +4,7 @@ sidebar_position: 4
 
 # 🟢 Запит з кількома ілюстраціями
 
-import FewShot from '@site/docs/assets/basics/few_shot.svg';
+import FewShot from '@site/docs/assets/few_shot.svg';
 
 <div style={{textAlign: 'center'}}>
   <FewShot style={{width:"100%",height:"200px",verticalAlign:"top"}}/>
