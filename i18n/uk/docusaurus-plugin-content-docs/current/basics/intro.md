@@ -2,7 +2,7 @@
 sidebar_position: 0
 ---
 
-# 🟢 Introduction
+# 🟢 Вступ
 
 import Techniques from '@site/docs/assets/basics/techniques.svg';
 
@@ -10,43 +10,43 @@ import Techniques from '@site/docs/assets/basics/techniques.svg';
   <Techniques style={{width:"100%",height:"300px",verticalAlign:"top"}}/>
 </div>
 
-This chapter introduces simple prompting techniques as well as terminology. In order to understand prompting/prompt engineering, you first need to understand some *very* basic AI concepts. If you already know about the below topics, feel free to skip ahead to the [next article](https://learnprompting.org/docs/basics/prompting).
+У цьому розділі представлені прості методи запитів, а також термінологія. Щоб осягнути систему запитування / інженерію запитів, вам спочатку потрібно зрозуміти деякі *дуже* базові концепції ШІ. Якщо ви вже знаєте про наведені нижче теми, можете перейти до [наступної статті](https://learnprompting.org/docs/basics/prompting).
 
-## What is AI?
+## Що таке ШІ?
 
-For our purposes, artificial intelligence (AI) is a field in which people have created "smart" algorithms that "think" like humans[^1]. These algorithms can write **essays**, solve **math problems**, and create **art**. Recent advances in the field have created AIs so advanced that they can write convincing **sales emails**, **news articles**, and even **win [art competitions](https://impakter.com/art-made-by-ai-wins-fine-arts-competition/)**.
+Для наших цілей штучний інтелект (ШІ) – це сфера, у якій люди створили «розумні» алгоритми, які «мислять» як люди[^1]. Ці алгоритми можуть писати **есе**, розв'язувати **математичні завдання** та творити **мистецтво**. Завдяки останнім досягненням у цій галузі ШІ вдосконалили настільки, що він тепер може писати переконливі **рекламні електронні листи**, **статті новин**і навіть **вигравати в [мистецьких конкурсах](https://impakter.com/art-made-by-ai-wins-fine-arts-competition/)**.
 
-AI is currently revolutionizing many industries, including **journalism**, **healthcare**, and **education**. You will likely see it deployed in your workplace/classroom soon if you have not already. Although AI is extremely useful, it requires humans to direct it on what to do. Often AIs are like very smart five-year-olds. They can do a lot of things, but they need careful instruction to do them well.
+Зараз ШІ докорінно змінює багато галузей, зокрема **журналістику**, **охорону здоров’я** та **освіту**. Імовірно, незабаром ви побачите його на своєму робочому місці чи в класі, якщо цього ще досі не сталося. Хоч штучний інтелект і надзвичайно корисний, та він вимагає сприяння з боку людей. Зазвичай ШІ нагадує п’ятирічного вундеркінда. Він багато чого вміє, але, щоб досягти успіху, його потрібно як слід скерувати.
 
-Being able to properly direct AIs is a very powerful skill. So, how do you communicate with them? The AIs this course discusses understand English (and other languages), so we can usually just describe tasks that we want done. For example, we can tell an AI to `Write an essay about the benefits of AI` and it would say[^2]:
+Уміння правильно спрямовувати штучний інтелект — вельми потужна навичка. Отож як із ним взаємодіяти? ШІ, які ми досліджуємо в цьому курсі, розуміють англійську (та інші мови), тому зазвичай ми можемо просто описати, що нам потрібно. Наприклад, ми можемо сказати ШІ `Написати есе про переваги штучного інтелекту,` і ось що вийде[^2]:
 
 ```
-In recent years, Artificial Intelligence (AI) has become a hot topic among the tech world. With its potential to revolutionize many aspects of our lives, AI is becoming increasingly relevant as technology continues to develop. From its applications in healthcare and transportation to its use in education and manufacturing, AI has already shown us its immense potential to benefit society in multiple ways.
+Впродовж останніх років штучний інтелект (ШІ) палко обговорюють у світі технологій. Завдяки своєму потенціалу докорінно змінювати багато аспектів нашого життя ШІ стає все більш актуальним у міру того, як технології продовжують розвиватися. Від застосування у сферах охорони здоров’я та транспортування до використання в освіті та виробництві, ШІ вже показав нам свій величезний потенціал приносити користь суспільству різними способами.
 
-The most obvious benefit of AI is its ability to automate mundane tasks. AI systems can be used to automate large-scale operations, such as data analysis, customer service, and even the production of goods. This frees up human labor to focus on complex, creative tasks that require more human intelligence and ingenuity. AI can also be used to analyze large amounts of data and make decisions in a fraction of the time it would take a human. This can be beneficial in industries such as finance, where AI can detect patterns in the stock market and offer insights that would otherwise go unnoticed.
+Найбільш очевидною перевагою ШІ є його здатність автоматизувати повсякденні завдання. Системи ШІ можна використовувати для автоматизації великомасштабних операцій, таких як аналіз даних, обслуговування клієнтів і навіть виробництво товарів. Це звільняє час для людей, щоб зосередитися на складних, творчих завданнях, які вимагають більше людського інтелекту та винахідливості. Штучний інтелект також можна використовувати для аналізу великих обсягів даних і прийняття рішень за проміжок часу, який знадобився б людині. Це може бути корисним у таких галузях, як фінанси, де ШІ може виявляти закономірності на фондовому ринку та пропонувати ідеї, які інакше залишилися б непоміченими.
 
-AI can also be used to make predictions and generate insights that can be used to improve efficiency and accuracy. For instance, AI can be used to predict customer trends and preferences, helping businesses make better decisions and increase profits. AI can also be used to identify potential risks and opportunities in various industries, such as finance, healthcare, and manufacturing. This can help companies make informed decisions and reduce the risk of costly mistakes.
+Штучний інтелект також можна застосовувати для прогнозування й отримання інформації, яка може бути використана для підвищення ефективності та точності. Наприклад, ШІ можна використовувати для прогнозування тенденцій і вподобань клієнтів, допомагаючи підприємствам ухвалювати кращі рішення та збільшувати прибуток. Штучний інтелект також можна використовувати для виявлення потенційних ризиків і можливостей у різних галузях, таких як фінанси, охорона здоров’я та виробництво. Це може допомогти компаніям ухвалювати обґрунтовані рішення та зменшити ризик дорогих помилок.
 
-Finally, AI can be used to improve our understanding of the world. AI can be used to analyze large datasets and generate insights that can be used to better understand the world around us. This can be used to help us better understand the impacts of climate change, develop new treatments for diseases, and even predict events such as earthquakes and floods.
+Нарешті, ШІ можна використовувати для покращення нашого розуміння світу. Штучний інтелект можна застосовувати для аналізу великих наборів даних і створення ідей, які можна використовувати для кращого розуміння навколишнього світу. Його можна використати для кращого розуміння наслідків зміни клімату, розробки нових методів лікування захворювань і навіть прогнозування таких подій, як землетруси та повені.
 
-Overall, AI has the potential to revolutionize many aspects of our lives. From automating mundane tasks to generating insights and predictions, AI can be used to improve efficiency, accuracy, and our understanding of the world. As technology continues to develop, AI will become increasingly relevant and its potential to benefit society will only grow.
+Загалом ШІ має потенціал радикально змінити чимало аспектів нашого життя. Від автоматизації повсякденних завдань до генерування ідей і прогнозів — штучний інтелект можна використовувати для підвищення ефективності, точності та нашого розуміння світу. З розвитком технологій штучний інтелект ставатиме все більш необхідним, а його користь для суспільства лише зростатиме.
 ```
 
-## Why should I care?
+## Як це стане в пригоді?
 
-AI can be used to automate tasks that you spend countless hours doing *right now*. We mentioned several examples above, but you can also consider any slightly repetitive task you do. It could be writing emails, writing reports, or even writing code. If you can describe the task to an AI, it can likely either do it for you or at least give you a starting point.
+ШІ можна використовувати для автоматизації завдань, на виконання яких ви *прямо зараз* витрачаєте незліченну кількість годин. Ми навели кілька прикладів вище, але ви також можете послуговуватися ним при виконанні будь-якого циклічного завдання, з яким маєте справу. До прикладу, написання електронних листів, звітів чи навіть коду. Якщо ви зможете описати завдання штучному інтелекту, то він, ймовірно, виконає його за вас чи, принаймні, підкаже напрямок дій.
 
-## How do I get started?
+## З чого мені розпочати?
 
-Read the rest of this chapter, then check out other chapters that interest you. In particular, the [applied prompting](https://learnprompting.org/docs/applied_prompting/overview) section may be of interest if you would like to see how professionals use AI to automate their work. You can experiment with AIs using resources like [Playground](https://beta.openai.com/playground), [other IDEs](https://learnprompting.org/docs/tooling/IDEs/intro), or simply using the interactive [embeds](https://learnprompting.org/docs/basics/intro#embeds) that you will see throughout this site.
+Дочитайте цей розділ до кінця, а потім — перегляньте інші, що вас зацікавили. Зокрема, розділ ["Прикладні підказки"](https://learnprompting.org/docs/applied_prompting/overview) може привернути увагу тих, хто хоче зрозуміти, як фахівці використовують ШІ для автоматизації своєї роботи. Ви можете експериментувати зі штучним інтелектом, використовуючи такі ресурси, як [Playground](https://beta.openai.com/playground) [чи інші ІСР (інтегровані середовища розробки)](https://learnprompting.org/docs/tooling/IDEs/intro), або ж просто вбудовані інтерактивні [елементи](https://learnprompting.org/docs/basics/intro#embeds), які ви побачите на цьому сайті.
 
-Before reading the next article, it is important to note that you don't need any technical background to do prompt engineering. Most of it is trial and error, and you can learn as you go.
+Перш ніж читати наступну статтю, важливо зазначити, що ви не потребуєте технічної підготовки для швидкого опанування розробки. Здебільшого ви накопичуєте досвід методом проб і помилок, відповідно навчаєтесь по ходу справи.
 
-### Embeds
+### Вбудовані елементи
 
-This course offers an interactive learning experience. You can experiment with exercises discussed in the course using [embeds](https://embed.learnprompting.org/) that are placed throughout the site.
+Цей курс передбачає інтерактивний підхід до навчання. Ви можете експериментувати з вправами, розглянутими в курсі, використовуючи [вбудовані елементи](https://embed.learnprompting.org/), розміщені по всьому сайту.
 
-Here is an **image** of what an embed looks like:
+Ось **зображення** того, як виглядає вставка:
 
 import dyno from '@site/docs/assets/basics/dyno_example.png';
 import key from '@site/docs/assets/basics/API_key.png';
@@ -55,32 +55,32 @@ import key from '@site/docs/assets/basics/API_key.png';
   <img src={dyno} style={{width: "750px"}} />
 </div>
 
-You should be able to see an embed that looks exactly like this image right below this paragraph. If you can't, you may need to enable JavaScript or use a different browser.
+Ви маєте побачити вставку, яка виглядає точно так само, як зображення під цим абзацом. Якщо ви не бачите його, вам може знадобитися увімкнути JavaScript або скористатися іншим браузером.
 
 <hr />
-Embed here: <iframe
+Вбудувати тут: <iframe
     src="https://embed.learnprompting.org/embed?config=eyJ0b3BQIjowLCJ0ZW1wZXJhdHVyZSI6MCwibWF4VG9rZW5zIjoyNTYsIm91dHB1dCI6IkNob2NvbGF0ZSwgVmFuaWxsYSwgU3RyYXdiZXJyeSwgTWludCBDaGlwLCBSb2NreSBSb2FkLCBDb29raWUgRG91Z2gsIEJ1dHRlciBQZWNhbiwgTmVhcG9saXRhbiwgQ29mZmVlLCBDb2NvbnV0IiwicHJvbXB0IjoiR2VuZXJhdGUgYSBjb21tYSBzZXBhcmF0ZWQgbGlzdCBvZiAxMCBpY2UgY3JlYW0gZmxhdm9yczoiLCJtb2RlbCI6InRleHQtZGF2aW5jaS0wMDMifQ%3D%3D"
     style={{width:"100%", height:"280px", border:"0", borderRadius:"4px", overflow:"hidden"}}
     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
 ></iframe>
 <hr />
 
-Assuming that you can see it, click on the **Generate** button. If this is your first time using it (or you are in a new browser/have cleared cookies), it will ask you to input an [OpenAI API key](https://platform.openai.com/account/api-keys). You can get a free key by clicking [this link](https://platform.openai.com/account/api-keys) and signing up for an OpenAI account. This key allows you to use OpenAI's AIs to generate text in the embeds.
+Якщо ви бачите його, натисніть кнопку **Створити**. Якщо ви використовуєте його вперше (або знаходитесь у новому веб-браузері / очистили файли cookie), він попросить вас ввести [ключ OpenAI API](https://platform.openai.com/account/api-keys). Ви можете отримати безкоштовний ключ, натиснувши [ на це посилання](https://platform.openai.com/account/api-keys) і створивши обліковий запис OpenAI. Цей ключ дозволяє використовувати штучний інтелект OpenAI для генерування тексту у вбудовуваннях.
 
 :::note
-Although OpenAI provides free credits, you will eventually have to pay to use their AI. Fortunately, it is [relatively cheap](https://openai.com/pricing)!
+Незважаючи на те, що OpenAI надає безкоштовні кредити, зрештою вам доведеться платити за використання їх ШІ. На щастя, це [відносно дешево](https://openai.com/pricing)!
 :::
 
-When you navigate to the [OpenAI API key](https://platform.openai.com/account/api-keys) page, click the **Create new secret key** button. It will pop up a modal that contains a string of text like this:
+Коли ви перейдете на сторінку [ключа OpenAI API](https://platform.openai.com/account/api-keys), натисніть кнопку ** Створити новий секретний ключ**. З’явиться модальне вікно, що містить такий текст:
 
 <div style={{textAlign: 'center'}}>
   <img src={key} style={{width: "750px"}} />
 </div>
 
-Put this key into the embed and hit **Save**. You should now be able to use the embeds throughout this site.
+Вставте цей ключ у вбудовування та натисніть **Зберегти**. Тепер ви можете використовувати вбудовування на всьому сайті.
 
-Now you have all of the information that you need to get started. Happy Learning!
+Тепер у вас є вся інформація, необхідна для початку. Успіхів у навчанні!
 
 
-[^1]: Technically, they are not "thinking" like humans, but this is a simple way to explain it.
-[^2]: An AI (GPT-3 davinci-003) did in fact write this.
+[^1]: Технічно вони не «мислять» як люди, але це простий спосіб пояснити це.
+[^2]: ШІ (GPT-3 davinci-003) насправді написав це.
