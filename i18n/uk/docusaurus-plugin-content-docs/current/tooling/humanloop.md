@@ -4,7 +4,7 @@ sidebar_position: 11
 
 # Human Loop
 
-[Human loop](https://humanloop.com/) appears to offer a playground similar to the GPT-3 Playground, but with some added features. They are currently working with more industry users.
+[Human Loop](https://humanloop.com/) пропонує платформу, схожу на платформу GPT-3, але з додатковими функціями. Зараз вони працюють із більшою кількістю користувачів галузі.
 
 import Image from '@site/docs/assets/tooling/humanloop.png';
 
@@ -12,9 +12,9 @@ import Image from '@site/docs/assets/tooling/humanloop.png';
   <img src={Image} style={{width: "750px"}} />
 </div>
 
-## Features
-1. Provides a simple SDK to log the GPT-3 requests and user feedback.
-2. Provides feedback on the user inputs and discovers issues user is missing.
-3. Users will be able to log explicit and implicit signals through SDK.
-4. Users will be easily A/B test models and prompts with the improvement engine built for GPT-3.
-5. Users will be able to Compare prompts on different models and find the best model and reduce cost.
+## Характеристики
+1. Надає простий пакет засобів для розробки ПЗ для реєстрації запитів GPT-3 і відгуків користувачів.
+2. Надає відгуки про введені користувачем дані та виявляє проблеми, які користувач пропускає.
+3. Користувачі зможуть реєструвати явні та неявні сигнали через засоби для розробки ПЗ.
+4. Користувачам буде легко проводити спліт-тестування моделей та запитів за допомогою механізму вдосконалення, створеного для GPT-3.
+5. Користувачі зможуть порівняти запити для різних моделей, знайти найкращу модель та зменшити вартість.
