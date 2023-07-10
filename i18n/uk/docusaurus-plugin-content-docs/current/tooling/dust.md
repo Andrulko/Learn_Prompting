@@ -4,9 +4,9 @@ sidebar_position: 3
 
 # Dust
 
-[Dust](https://dust.tt/) is a prompt engineering tool built for chaining prompts together. They provide a web interface for writing prompts and chaining them together.
+[Dust](https://dust.tt/) – це інструмент інженерії запитів, створений для об’єднання запитів у ланцюг. Він надає вебінтерфейс для написання запитів і їх об’єднання.
 
-At the moment, it has a steep learning curve compared to other prompt engineering IDEs.
+Наразі він має стрімку криву навчання в порівнянні з іншими ІСР для інженерії запитів.
 
 import Image from '@site/docs/assets/tooling/dust.png';
 
@@ -14,17 +14,17 @@ import Image from '@site/docs/assets/tooling/dust.png';
   <img src={Image} style={{width: "750px"}} />
 </div>
 
-## Features
+## Характеристики
 
-Dust provides robust tooling in the form of a number of composable "blocks", for functions like LLM querying, code snippets, and internet searches. Dust also supports the use of datasets and automatically testing prompts against datasets.
+Dust надає надійні інструменти у формі кількох об'єднаних разом «блоків» для таких функцій, як запити по великих мовних моделях (ВММ), фрагменти коду та пошук в Інтернеті. Dust також підтримує використання наборів даних і автоматичне тестування запитів по наборах даних.
 
-Current Dust functionality focuses on chaining prompts rather than iterating on a single prompt.
+Поточний функціонал Dust зосереджений на об’єднанні запитів у ланцюг, а не на ітерації одного запиту.
 
-Dust supports multiple model providers: (OpenAI, Cohere), and has planned support for HuggingFace and Replicate. API keys are required for all providers.
+Dust підтримує кілька постачальників моделей: (OpenAI, Cohere) і планує підтримку HuggingFace і Replicate. Ключі прикладного програмного інтерфейсу потрібні для всіх постачальників.
 
-You can deploy LLM apps built in Dust.
+Ви можете застосовувати програми ВММ, створені в Dust.
 
-## Notes
+## Примітки
 
-Dust has recently reached 1,000 active users.
+Dust нещодавно досяг 1000 активних користувачів.
 
