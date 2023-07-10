@@ -2,116 +2,116 @@
 sidebar_position: 40
 ---
 
-# 🟢 Finding Emojis
+# 🟢 Підбір емодзі
 
-🤔 Do you ever need the **perfect emoji** for a tweet or post?
+🤔 Вам коли-небудь був потрібен **ідеальний емодзі** для твіту чи допису?
 
-Sometimes it is hard to remember which of the thousands of emojis would be best. Fortunately, AI can help!
+Іноді важко пригадати, який із тисяч емодзі підійде найкраще. На щастя, ШІ може допомогти!
 
-As an example, let's try to find the best emojis to add to [this](https://twitter.com/learnprompting/status/1631786358330085382) tweet:
+Як приклад, спробуймо підібрати найкращі емодзі, щоб додати їх до [цього](https://twitter.com/learnprompting/status/1631786358330085382) твіту:
 
 ```text
-Ready to unleash your creativity with AI?
+Готові розкрити свій творчий потенціал за допомогою ШІ?
 
-Discover the power of Midjourney, the AI image generator that produces stunning and artistic images!
+Відкрийте для себе можливості Midjourney, генератора зображень штучного інтелекту, який створює приголомшливі художні зображення!
 
-Check out our newest article to learn how to create your own unique masterpieces with AI
+Ознайомтеся з нашою останньою статтею, щоб дізнатися, як створювати власні унікальні шедеври за допомогою ШІ
 ```
 
-We could ask ChatGPT to help us:
+Ми можемо попросити ChatGPT допомогти нам:
 
 ```text
-Ready to unleash your creativity with AI?
+Готові розкрити свій творчий потенціал за допомогою ШІ?
 
-Discover the power of Midjourney, the AI image generator that produces stunning and artistic images!
+Відкрийте для себе можливості Midjourney, генератора зображень штучного інтелекту, який створює приголомшливі художні зображення!
 
-Check out our newest article to learn how to create your own unique masterpieces with AI
+Ознайомтеся з нашою останньою статтею, щоб дізнатися, як створювати власні унікальні шедеври за допомогою ШІ
 
-What are some good emojis to add to this tweet?
+Які вдалі емодзі можна додати до цього твіту?
 
 // highlight-start
-Here are some relevant emojis that you can use to convey the message and tone of the tweet:
+Ось кілька доречних емодзі, які можна використовувати, щоб передати зміст та тон твіту:
 
-🎨 Palette: to represent creativity and art.
-🤖 Robot face: to indicate the involvement of AI and technology.
-🌟 Sparkles: to highlight the stunning and artistic quality of the generated images.
-🔍 Magnifying glass: to suggest exploration and discovery.
-💡 Light bulb: to signify new ideas and innovation.
-📝 Memo: to imply a step-by-step guide on how to create masterpieces with AI.
+🎨 Палітра: є втіленням творчості та мистецтва.
+🤖 Обличчя робота: вказує на залучення ШІ та технологій.
+🌟 Блискітки: підкреслюють приголомшливу та художню якість створених зображень.
+🔍 Збільшувальне скло: пропонує дослідження та відкриття.
+💡 Лампочка: символізує нові ідеї та інновації.
+📝 Пам’ятка: покрокова інструкція щодо створення шедеврів за допомогою ШІ.
 // highlight-end
 ```
 
-These are good, but I like to go sentence by sentence!
+Непогано, але хочеться детальніше, речення за реченням!
 
-## Sentence 1
+## Речення 1
 
 ```text
-Ready to unleash your creativity with AI?
+Готові розкрити свій творчий потенціал за допомогою ШІ?
 
-What are some good emojis to add to this part of a tweet?
+Які вдалі емодзі можна додати до цієї частини твіту?
 
 //highlight-start
-Here are some emojis that could go well with the sentence "Ready to unleash your creativity with AI?":
+Ось кілька емодзі, які добре пасуватимуть до речення "Готові розкрити свій творчий потенціал за допомогою ШІ?":
 
-🎨 Palette: to suggest creativity and art.
-🤖 Robot face: to indicate the involvement of AI and technology.
-💪 Flexed biceps: to show strength and determination to create something new.
-🚀 Rocket: to imply progress, advancement, and innovation.
-🌟 Sparkles: to suggest the idea of something new and exciting.
+🎨 Палітра: є втіленням творчості та мистецтва.
+🤖 Обличчя робота: вказує на залучення ШІ та технологій.
+💪 Зігнуті біцепси: демонструють силу і рішучість у створенні чогось нового.
+🚀 Ракета: означає прогрес, розвиток та інновації.
+🌟 Блискітки: пропонують ідею чогось нового та цікавого.
 // highlight-end
 ```
 
-## Sentence 2
+## Речення 2
 
 ```text
-Check out our newest article to learn how to create your own unique masterpieces with AI
+Ознайомтеся з нашою останньою статтею, щоб дізнатися, як створювати власні унікальні шедеври за допомогою ШІ
 
-What are some good emojis to add to this part of a tweet?
+Які вдалі емодзі можна додати до цієї частини твіту?
 
 //highlight-start
-Here are some relevant emojis that you can use to convey the message and tone of the tweet:
+Ось кілька доречних емодзі, які можна використовувати, щоб передати зміст та тон твіту:
 
-🤖 Robot face: to indicate the involvement of AI and technology.
-🌟 Sparkles: to highlight the stunning and artistic quality of the generated images.
-📷 Camera: to suggest that the generated images are of high quality and worth sharing.
-🎨 Palette: to represent creativity and art.
-🔍 Magnifying glass: to imply that the AI image generator is a tool to explore and discover new possibilities.
+🤖 Обличчя робота: вказує на залучення ШІ та технологій.
+🌟 Блискітки: підкреслюють приголомшливу та художню якість створених зображень.
+📷 Камера: підтверджує те, що створені зображення мають високу якість і варті того, щоб ними ділитися.
+🎨 Палітра: є втіленням творчості та мистецтва.
+🔍 Збільшувальне скло: означає, що генератор зображень ШІ є інструментом для дослідження та відкриття нових можливостей.
 
-// highlight-end
+// світло в кінці
 ```
 
-## Sentence 3
+## Речення 3
 
 ```text
-Discover the power of Midjourney, the AI image generator that produces stunning and artistic images!
+Відкрийте для себе можливості Midjourney, генератора зображень штучного інтелекту, який створює приголомшливі художні зображення!
 
-What are some good emojis to add to this part of a tweet?
+Які вдалі емодзі можна додати до цієї частини твіту?
 
 //highlight-start
-Here are some relevant emojis that you can use to convey the message and tone of the tweet:
+Ось кілька доречних емодзі, які можна використовувати, щоб передати зміст та тон твіту:
 
-📝 Memo: to suggest that the article is a guide or a how-to.
-💡 Light bulb: to imply new ideas and inspiration.
-🤖 Robot face: to indicate the involvement of AI and technology.
-🎨 Palette: to represent creativity and art.
-📚 Book: to suggest that the article is informative and educational.
+📝 Примітка: зазначає те, що стаття є посібником або інструкцією.
+💡 Лампочка: символізує нові ідеї та натхнення.
+🤖 Обличчя робота: вказує на залучення ШІ та технологій.
+🎨 Палітра: є втіленням творчості та мистецтва.
+📚 Книга: вказує, що стаття є навчально-пізнавальною.
 // highlight-end
 ```
 
-## Conclusion
+## Висновок
 
-Now that I have emoji suggests for each part, I can add in the ones I like and tweet it out!
+Тепер, коли у мене є пропозиції емодзі для кожної частини, я можу додати ті, які мені подобаються, і опублікувати їх у Твіттері!
 
 ```text
-Ready to unleash your creativity with AI? 🔥🎨
+Готові розкрити свій творчий потенціал за допомогою ШІ? 🔥🎨
 
-Discover the power of Midjourney, the AI image generator that produces stunning and artistic images! ✨
+Відкрийте для себе можливості Midjourney, генератора зображень штучного інтелекту, який створює приголомшливі художні зображення! ✨
 
-Check out our newest article to learn how to create your own unique masterpieces with AI 🖌️
+Ознайомтеся з нашою останньою статтею, щоб дізнатися, як створювати власні унікальні шедеври за допомогою ШІ 🖌️
 ```
 
-Note that I added in some emojis that weren't suggested by the AI. You should always use your own judgement when choosing emojis, and just use ChatGPT to help you find some good options!
+Зауважте, що я додав деякі емодзі, які не були запропоновані ШІ. Ви завжди повинні обирати емодзі на власний розсуд і використовувати ChatGPT, щоб просто знайти хороші варіанти!
 
-## Notes
+## Примітки
 
-- I prefer ChatGPT for this task since it provides rationales for its suggestions. GPT-3 often just outputs a list of emojis: 🤩😎🤩🤩😃😃💪
+- Я віддаю перевагу ChatGPT для цього завдання, оскільки він надає обґрунтування своїх пропозицій. GPT-3 часто просто виводить список емодзі: 🤩😎🤩🤩😃😃💪
