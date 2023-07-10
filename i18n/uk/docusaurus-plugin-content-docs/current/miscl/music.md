@@ -2,33 +2,33 @@
 sidebar_position: 3
 ---
 
-# 🟢 Music Generation
+# 🟢 Створення музики
 
-Music generation models are becoming increasingly popular, and will eventually have a large impact on the music industry.
+Моделі для створення музики стають дедалі популярнішими та з часом матимуть великий вплив на музичну індустрію.
 
-Music generation models can create chord progressions, melodies, or full songs. They can structure and create music in specific genres and compose or improvise in the style of specific artists.
+Ці моделі можуть створювати послідовності акордів, мелодії або ж навіть цілі пісні. Крім того, вони моделюють та створюють музику в певних жанрах, а також складають або імпровізують в стилі певних виконавців.
 
-However, despite the enormous potential of music models, they are currently difficult to prompt. Generated output is often not thoroughly customizable by prompts, unlike image or text generation models.
+Однак, незважаючи на величезний потенціал музичних моделей, написання запитів для них все ще є не легкою справою. На відміну від моделей для генерації зображень або тексту, модель для створення музики часто не можна повністю налаштувати так за допомогою запитів, щоб отримати гарний кінцевий результат.
 
-## Riffusion
+## Нейронна мережа для створення музики Riffusion
 import riffusion from '@site/docs/assets/miscl/riffusion_phonk.png';
 
 <div style={{textAlign: 'center'}}>
   <img src={riffusion} style={{width: "500px"}} />
 </div>
 
-Riffusion(@Forsgren_Martiros_2022), a fine tuned version of Stable Diffusion, can be controlled with prompts to generate instruments and pseudo styles, but it has a limited number of beats available.
+Riffusion(@Forsgren_Martiros_2022) – це вдосконалена версія Stable Diffusion, якою можна керувати за допомогою запитів для створення інструментів і псевдостилів, однак вона має обмежену кількість доступних бітів.
 
 ## Mubert
 
-[Mubert](https://mubert.com/) seems to interpret prompts through sentiment analysis that links appropriate musical stylistics to the prompt (controlling the musical parameters in detail via prompts is not possible). It is unclear how much of the resultant generation is done by AI.
+[Mubert](https://mubert.com/), очевидно, інтерпретує запити використовуючи аналіз тональності, який пов’язує відповідну музичну стилістику з запитом (повноцінний контроль музичних параметрів через запити неможливий). Поки що не зрозуміло, яку частку роботи під час створення музики виконує ШІ.
 
-## Other
+## Інше
 
-There are attempts to use GPT-3 as a Text-2-Music tool with actual prompting for musical elements on the "micro-level" of notes (instead of the rather vague prompt-style-analogies mubert & riffusion produce) (e.g. `write the notes for a folk song that only uses A, B, C#, F#, and G`). However, at present those attempts are limited to single instruments.
+Існують спроби використати GPT-3 як інструмент для перетворення тексту в музику із фактичним написанням запиту для музичних елементів на «мікрорівні» нот (замість розпливчастих аналогій стилю підказки mubert та riffusion produce) (наприклад, `напишіть ноти для народної пісні, яка використовує лише A, B, C#, F# та G`). Однак наразі ці намагання обмежені, оскільки можна використовувати тільки деякі інструменти.
 
-Other approaches include a model chain that [converts any image into sound that represents it](https://huggingface.co/spaces/fffiloni/img-to-music) and prompting ChatGPT to generate code for [Python libraries that create sound](https://twitter.com/teropa/status/1598713756074246145).
+Інші підходи передбачають створення ланцюжка моделі, що [перетворює будь-яке зображення на звук, який його представляє](https://huggingface.co/spaces/fffiloni/img-to-music) і далі, завдяки запиту для ChatGPT, генерується код для [бібліотек Python, які вже створюють звук](https://twitter.com/teropa/status/1598713756074246145).
 
-## Notes
+## Примітки
 
-Music prompting is not well built out... yet. MusicLM looks promising, but it is not yet available to the public.
+Запити для створення музики все ще потребують допрацювання. MusicLM має багато перспектив, але він ще не доступний для громадськості.
