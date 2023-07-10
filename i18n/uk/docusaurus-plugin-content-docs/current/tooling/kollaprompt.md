@@ -4,7 +4,7 @@ sidebar_position: 14
 
 # Kolla Prompt 🚧
 
-[Kolla Prompt](https://kollaprompt.com) is a tool for graphically chaining prompts.
+[Kolla Prompt](https://kollaprompt.com) – це інструмент для графічного об’єднання запитів.
 
 import Image from '@site/docs/assets/tooling/kollaprompt.png';
 
@@ -12,6 +12,6 @@ import Image from '@site/docs/assets/tooling/kollaprompt.png';
   <img src={Image} style={{width: "750px"}} />
 </div>
 
-## Features
+## Характеристики
 
-Kolla features draggable blocks that are piped together to form a pipeline. It also allows for chaining language models to image models.
+У Kolla є блоки, які можна перетягувати, з’єднуючи в послідовність. Він також дозволяє об'єднувати мовні моделі в ланцюг із моделями зображень.
